@@ -32,12 +32,12 @@ function App() {
         <button className='text-orange-500 font-roboto bg-white text-2xl py-3 px-20 rounded-md'>Sign In!</button>
     </header>
   
-    <main className='bg-white p-12'>
-  <div className='bg-orange-500 border flex justify-between items-center'>
+    <main className='bg-white p-12 flex justify-center'>
+  <div className='bg-orange-500 border flex justify-between items-center w-5/6 h-64 mt-8'>
     <img src={flechaizq} alt="" />
     <div className='flex gap-x-52 p-9 mx-auto justify-center items-center'>
-      <img src={imagennami} alt="" />
-      <img src={imagenluffy} alt="" />
+      <img className="mb-16"src={imagennami} alt="" />
+      <img className="mb-20" src={imagenluffy} alt="" />
       <div className='flex flex-col'>
         <h4 className="text-white font-bold text-2xl">Shonen</h4>
         <p className='text-white  '>Is the manga that is aimed at adolescent boys. They are <br /> series with large amounts of action, in which humorous <br /> situations often occur. The camaraderie between <br /> members of a collective or a combat team stands out.</p>
