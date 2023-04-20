@@ -6,12 +6,26 @@ module.exports = {
   ],
   theme: {
   extend: {
-    colors:
-    {
+    colors:{
       primary:"#222"
-    }
+    },
+    backgroundImage :{
+      'hero': "url('../public/img/Images + Rectangle.png')",
+      
+    },
+
+    height: {
+      '128': '50vh',
+    },    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    
   }
   },
   variants: {},
   plugins: []
  }
+ 
