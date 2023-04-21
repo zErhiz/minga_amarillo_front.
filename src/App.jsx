@@ -44,7 +44,7 @@ function App() {
     </header>
 
 
-    <main className=" flex h-96 content-center items-center  justify-center bg-white min-[320px]:text-center max-[725px]:hidden"> 
+    <main className=" flex h-96 content-center items-center  justify-center bg-white min-[320px]: max-[725px]:hidden"> 
 <div className="gap-4 bg-orange-500 h-64  w-5/6  flex justify-around items-center ">
   <img src={flechaizq} alt="" />
   <img className="h-60 mb-16" src={imagennami} alt="nami " />
