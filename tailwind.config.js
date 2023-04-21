@@ -13,7 +13,9 @@ module.exports = {
       'hero': "url('../public/img/Images + Rectangle.png')",
       
     },
-
+    width: {
+      '128': '50vw',
+    },
     height: {
       '128': '50vh',
     },    screens: {
