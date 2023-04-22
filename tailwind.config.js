@@ -11,6 +11,7 @@ module.exports = {
     },
     backgroundImage :{
       'hero': "url('../public/img/Images + Rectangle.png')",
+      'bgnaranja': "url('../public/img/rectangulonaranja.png')"
       
     },
     width: {
