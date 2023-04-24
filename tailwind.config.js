@@ -11,9 +11,12 @@ module.exports = {
     },
     backgroundImage :{
       'hero': "url('../public/img/Images + Rectangle.png')",
+      'bgnaranja': "url('../public/img/rectangulonaranja.png')"
       
     },
-
+    width: {
+      '128': '50vw',
+    },
     height: {
       '128': '50vh',
     },    screens: {
@@ -24,6 +27,7 @@ module.exports = {
     },
     
   }
+  
   },
   variants: {},
   plugins: []
