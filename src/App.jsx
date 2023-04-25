@@ -12,6 +12,7 @@ import ultima from '../public/img/ultimaimage.png'
 import Navbar from '../src/assets/components/Navbar'
 import Footer from '../src/assets/components/Footer.jsx'
 import Index from '../src/assets/pages/Index'
+import Main from './assets/layouts/Main'
 function App() {
   console.log(apiUrl)
 
@@ -20,12 +21,11 @@ function App() {
   return (
     <>
 
-
+<Main>
+  <Index/>
+</Main>
   
-<Navbar/> 
-<Index/>
-<Footer/>
-         
+
     
       
     </>
