@@ -3,7 +3,7 @@ import Buttons from "./Buttons.jsx"
 export default function Welcome() {
   return (
     <>
-    <div className=" bg-black  bg-hero bg-[38%] bg-cover   h-[100vh]  w-[100%] sm:h-[60vh] xl:h-[60vh]">  
+    <div className=" bg-black  bg-hero bg-[39%] sm:bg-cover bg-no-repeat bg-center  h-[100vh]  w-[100%] sm:h-[60vh] ">  
    
       <div className='h-full flex justify-center  items-center sm:h-[82%]  '>
         <div className=' w-scren items-center flex flex-col  sm:w-5/6 sm:items-start 2xl:mt-40 sm:mt-20 '>
