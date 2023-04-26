@@ -68,8 +68,8 @@ export default function Carousel() {
   </div>
   <div className="flex sm:w-1/4 items-center justify-center xl:w-0 "></div>
   <div className="w-full sm:w-1/2  xl:mt-[4rem] ">
-    <h3 className="text-white sm:text-2xl font-semibold ">{`${categories[counter]?.name[0].toUpperCase()}${categories[counter]?.name.substring(1)}`}</h3>
-    <p className="text-white sm:text-1xl sm:overflow-auto sm:h-20  xl:h-40 ">{categories[counter]?.description}</p>
+    <h3 className="text-white sm:text-2xl font-roboto font-semibold">{`${categories[counter]?.name[0].toUpperCase()}${categories[counter]?.name.substring(1)}`}</h3>
+    <p className="text-white sm:text-1xl sm:overflow-auto sm:h-20  xl:h-40 font-roboto ">{categories[counter]?.description}</p>
   </div>
   <div className="flex sm:w-1/4 items-center justify-center ">
     <img onClick={arrowAfter} src={flechader} alt="" className="w-8 h-8  cursor-pointer" />
