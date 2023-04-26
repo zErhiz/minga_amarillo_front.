@@ -25,7 +25,11 @@ module.exports = {
       lg: '976px',
       xl: '1440px',
     },
-    
+    extend: {
+      inset: {
+        '3px': '3px',
+      }
+    }
   }
   
   },
