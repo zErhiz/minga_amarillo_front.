@@ -16,7 +16,7 @@ export default function Carousel() {
 
   const [categories, setCategories] = useState([])
   const [counter, setCounter] = useState(0)
- console.log(categories)
+ 
   useEffect(() => {
   
     const valorInterval = setInterval(() => {
