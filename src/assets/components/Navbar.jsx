@@ -22,7 +22,7 @@ console.log(menu)
     </div>
     </div>
     </nav>
-    {menu ? (
+    {menu ? 
             <div className='bg-orange-500 fixed top-0 left-0 right-0 bottom-0 z-50 sm:right-[170px] 2xl:right-[1200px] xl:right-[1000px] md:right-[450px] lg:right-[700px]'>
               <div className='  flex p-4 justify-between items-center'> 
               <div className='flex   gap-2'>
@@ -46,7 +46,7 @@ console.log(menu)
 
             </div> 
             
-          ):null}
+          :null}
   </header>  
   </>
   )
