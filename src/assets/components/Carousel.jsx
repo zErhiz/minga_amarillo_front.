@@ -14,10 +14,9 @@ export default function Carousel() {
   )
   
 
-  
   const [categories, setCategories] = useState([])
   const [counter, setCounter] = useState(0)
-
+ console.log(categories)
   useEffect(() => {
   
     const valorInterval = setInterval(() => {
@@ -30,7 +29,7 @@ export default function Carousel() {
       })
     }, 4000)
     
-    console.log(valorInterval)
+    
     
     return () => clearInterval(valorInterval)     //detiene el intervalo y evita que se siga inecesariamente
   }, [categories.length])         
@@ -56,15 +55,15 @@ export default function Carousel() {
 
   //el hook puede ir aca pero lo correcto es en las primeras lineas
   return (
-    <>  <main className="hidden bg-white sm:block sm:p-10 lg:p-28 xl:p-12 "> 
+    <>  <main className="hidden bg-white sm:block sm:p-10 lg:p-16 xl:p-12 "> 
   
-    <div className="  flex sm:flex-row justify-between items-center gap-4 lg:gap-20 "style={{backgroundColor:categories[counter]?.color}}>
+    <div className="  flex sm:flex-row justify-between items-center gap-4 lg:gap-20 "style={{ background: `linear-gradient(to bottom, ${categories[counter]?.color}, ${categories[counter]?.hover})` }}>
   <div className="flex sm:w-1/4 items-center justify-center  ">
     <img onClick={arrowPrev}src={flechaizq} alt="" className="w-8 h-8 flex justify-start  cursor-pointer" />
   </div>
-  <div className="flex sm:w-1/2 items-center justify-center lg:gap-20 xl:gap-40 ">
-    <img src={categories[counter]?.character_photo} alt="nami" className=" sm:h-50 sm:ml-4 sm:mt-[-1rem] lg:mt-[-5rem]  xl:h-60 xl:ml-[-9rem] xl:mt-[-4rem] " />
-    <img src={categories[counter]?.cover_photo} alt="luffy" className="sm:h-50 sm:mt-[-2rem] xl:h-60 lg:mt-[-5rem]  xl:ml-[-2rem] xl:mt-[-4rem] " />
+  <div className="flex sm:w-1/2 items-center justify-center sm:gap-4 lg:gap-20 xl:gap-40 ">
+    <img src={categories[counter]?.character_photo} alt="nami" className=" sm:h-50 sm:ml-4 sm:mt-[-2rem] lg:mt-[-5rem]  xl:h-60 xl:ml-[-9rem] xl:mt-[-4rem] sm:max-w-[50%] sm:h-auto md:max-w-[70%] md:h-auto " />
+    <img src={categories[counter]?.cover_photo} alt="luffy" className="sm:h-50 sm:mt-[-2rem] xl:h-60 lg:mt-[-5rem]  xl:ml-[-2rem] xl:mt-[-4rem] sm:max-w-[50%] sm:h-auto" />
   </div>
   <div className="flex sm:w-1/4 items-center justify-center xl:w-0 "></div>
   <div className="w-full sm:w-1/2  xl:mt-[4rem] ">
