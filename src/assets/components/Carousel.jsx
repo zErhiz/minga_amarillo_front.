@@ -32,7 +32,7 @@ export default function Carousel() {
     
     
     return () => clearInterval(valorInterval)     //detiene el intervalo y evita que se siga inecesariamente
-  }, [categories.length])         
+  }, )         
   const arrowPrev = () => {
     setCounter(prevCounter => {
       if (prevCounter === 0) {
