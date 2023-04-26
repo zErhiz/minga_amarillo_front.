@@ -9,10 +9,10 @@ console.log(menu)
   return (
     
     <> 
-    <header className="  bg-black  bg-hero bg-[38%] bg-cover   h-[100vh]  w-[100%] sm:h-[60vh] xl:h-[60vh] ">
+    <header className=''> 
     <nav className='flex justify-center  '>
 
-    <div className="  flex items-center mt-4 justify-between w-5/6  xl:mt-10">
+    <div className=" absolute top-[0rem] sm:top-[-2rem] flex items-center mt-4 justify-between w-5/6  xl:mt-10">
 
     <img onClick={() => setMenu(!menu)} className='sm:h-8 sm:mt-9 lg:mt-7 xl:h-12 cursor-pointer' src ={imagenmenu} alt="" />
     <div className='sm:flex  sm:items-center sm:mt-8 sm:gap-4  sm:flex-row'> 
