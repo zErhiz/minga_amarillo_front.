@@ -22,7 +22,7 @@ console.log(menu)
     </div>
     </div>
     </nav>
-    {menu ? 
+    {menu ?
             <div className='bg-orange-500 fixed top-0 left-0 right-0 bottom-0 z-50 sm:right-[170px] 2xl:right-[1200px] xl:right-[1000px] md:right-[450px] lg:right-[700px]'>
               <div className='  flex p-4 justify-between items-center'> 
               <div className='flex   gap-2'>
@@ -35,8 +35,8 @@ console.log(menu)
               <img className='cursor-pointer h-4 ' onClick={() => setMenu(!menu)} src={closeImage} alt="" />
               </div>
               <div> 
-                <ul className=' flex flex-col  items-center '> 
-              <li className='bg-white w-[80%] p-4 text-center rounded-lg h-auto text-orange-500 font-bold'><a href="#">Home</a></li>
+                <ul className=' flex flex-col  items-center 2xl:mt-20 xl:mt-20 '> 
+              <li className='bg-white w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-orange-500 font-bold'><a href="#">Home</a></li>
               <li className='p-4 text-white font-semibold'><a href="#">Comics</a></li>
               <li className='p-4 text-white font-semibold'><a href="#">My Comics</a></li>
               <li className='p-4 text-white font-semibold'> <a href="#">Favorites</a></li>
