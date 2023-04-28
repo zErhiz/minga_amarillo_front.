@@ -7,7 +7,7 @@ import ultima from '../../../public/img/ultimaimage.png'
 import corazon from '../../../public/img/Union.png'
 export default function Footer() {
   return (
-    <><img className='rounded-[50%_50%_48%52%/_0%_0%_100%_100%] h-[30vh] sm:w-screen lg:h-[50vh]' src={imagenfooterbakugo} alt="" />
+    <><img className='rounded-[50%_50%_48%52%/_0%_0%_100%_100%] h-[30vh] sm:w-screen lg:h-[30vh]' src={imagenfooterbakugo} alt="" />
     <div className='lg:w-[100%]  justify-center flex'> 
     <footer className=' flex flex-col items-center justify-around xl:gap-80 h-72 lg:flex-row lg:w-[60%] lg:justify-between  border-b-4 border-neutral-400'>
       <div className='flex flex-row gap-4 w-5/6 justify-evenly lg:gap-4'>

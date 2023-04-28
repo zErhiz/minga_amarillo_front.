@@ -16,12 +16,12 @@ export default function Carousel() {
 
   const [categories, setCategories] = useState([])
   const [counter, setCounter] = useState(0)
- 
+
   useEffect(() => {
   
     const valorInterval = setInterval(() => {
       setCounter(prevCounter => {
-        if (prevCounter === categories.length - 1) {
+        if (prevCounter >= categories.length - 1) {
           return 0
         } else {
           return prevCounter + 1
