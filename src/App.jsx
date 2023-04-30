@@ -21,12 +21,11 @@ function App() {
   return (
     <>
 
-<Main>
+
   <Index/>
-</Main>
+
   
 
-    
       
     </>
   )
