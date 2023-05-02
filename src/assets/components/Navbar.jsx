@@ -17,7 +17,7 @@ console.log(menu)
     <div className=" absolute top-[0rem] sm:top-[-2rem] flex items-center mt-4 justify-between w-5/6  xl:mt-10">
 
     <img onClick={() => setMenu(!menu)} className='sm:h-8 sm:mt-9 lg:mt-7 xl:h-12 cursor-pointer' src ={imagenmenu} alt="" />
-    <div className='sm:flex  sm:items-center sm:mt-8 sm:gap-4  sm:flex-row'> 
+    <div className='sm:flex  sm:items-center sm:mt-9 sm:gap-4  sm:flex-row'> 
 
     <h2 className='hidden sm:block text-orange-500 text-2xl xl:text-4xl'>Minga</h2>
     <img className='sm:h-6 xl:h-8' src={ultima} alt="" />
