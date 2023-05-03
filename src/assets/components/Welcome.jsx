@@ -1,6 +1,7 @@
 
 import Buttons from "./Buttons.jsx"
 export default function Welcome() {
+  let token = localStorage.getItem('token')
   return (
     <>
     <div className=" bg-black  bg-hero bg-no-repeat bg-cover bg-[39%] sm:bg-cover   h-[100vh]  w-[100%] sm:h-[60vh] ">  
