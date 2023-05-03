@@ -151,7 +151,7 @@ function AuthorFormComponent() {
               {nameInput} {lastNameInput}
             </h2>
             {cityCountryInput ? (
-              <h3 className="sm:flex sm:flex-row items-center overflow-x-auto overflow-y-auto md:max-h-[8vh]  sm:max-h-[5vh]  sm:max-w-[12rem] text-black md:text-2xl sm:text-sm hidden sm:block">
+              <h3 className="sm:flex sm:flex-row items-center overflow-x-auto overflow-y-auto md:max-h-[8vh]  sm:max-h-[5vh]  sm:max-w-[15rem] text-black md:text-2xl sm:text-sm hidden sm:block">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
