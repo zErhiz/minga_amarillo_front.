@@ -22,8 +22,9 @@ module.exports = {
     },
     backgroundImage :{
       'hero': "url('../public/img/Images + Rectangle.png')",
-      'bgnaranja': "url('../public/img/rectangulonaranja.png')"
-      
+      'bgnaranja': "url('../public/img/rectangulonaranja.png')",
+      'bgform':"url('../public/img/BGFORM.png')",
+      'bgform2':"url('../public/img/BGFORM2.PNG')"
     },
     width: {
       '128': '50vw',
