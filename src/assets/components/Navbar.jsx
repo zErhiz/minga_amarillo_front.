@@ -5,6 +5,7 @@ import userImage from '../../../public/img/killua.png'
 import closeImage from '../../../public/img/close.png'
 
 
+
 import { Link as Anchor } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -44,6 +45,7 @@ function backHome() {
       .catch(err => alert(err))
 }
 
+
   return (
     
     <> 
@@ -74,6 +76,7 @@ function backHome() {
               <div> 
                 <ul className=' flex flex-col  items-center 2xl:mt-20 xl:mt-20 '> 
 
+
                <li onClick={() => setMenu(!menu)} className='bg-white w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-orange-500 font-bold'><Anchor to="/">Home</Anchor></li>
               <li className='p-4 text-white font-semibold'><a href="#">Comics</a></li>
               <li className='p-4 text-white font-semibold'><a href="#">My Comics</a></li>
@@ -87,6 +90,7 @@ function backHome() {
               {!token? <li className='p-4 text-white font-semibold'><Anchor to='/register'>Register</Anchor></li>:null }
               {!token? <li className='p-4 text-white font-semibold'><Anchor to='/login'>Sign in</Anchor></li>:null }
               {role=== 0 ?   <li onClick={() => setMenu(!menu)} className='p-4 text-white font-semibold'> <Anchor to="/author-form"> New Author </Anchor></li> :null} 
+                {role === 1 || role === 2 ? ( <li className='p-4 text-white font-semibold'> <Anchor to="/chapters/:id">New Chapter</Anchor></li>): null}
 
 
               </ul>

@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom"
 export default function Main({children}) {
 
 
+
     return (
     <>
     <Navbar/>
@@ -13,6 +14,7 @@ export default function Main({children}) {
     
         <Outlet/>
     
+
 
 
     <Footer/>
