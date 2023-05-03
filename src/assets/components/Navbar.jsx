@@ -3,10 +3,16 @@ import imagenmenu from '../../../public/img/Menu.png'
 import ultima from '../../../public/img/ultimaimage.png'
 import userImage from '../../../public/img/killua.png'
 import closeImage from '../../../public/img/close.png'
-import { Link as Anchor } from "react-router-dom"
+import { Link as Anchor, useNavigate } from "react-router-dom"
 
 export default function Navbar() {
 let [menu,setMenu] = useState(false)
+const navigate = useNavigate()
+let token = localStorage.getItem('token')
+let headers = {headers:{'Authorization':`Bearer ${token}`}}
+let role = JSON.parse(localStorage.getItem('user'))?.role
+
+console.log(role)
 console.log(menu)
   return (
     
@@ -43,7 +49,7 @@ console.log(menu)
               <li className='p-4 text-white font-semibold'><a href="#">My Comics</a></li>
               <li className='p-4 text-white font-semibold'> <a href="#">Favorites</a></li>
               <li className='p-4 text-white font-semibold'> <a href="#">Logout</a></li>
-              <li onClick={() => setMenu(!menu)} className='p-4 text-white font-semibold'> <Anchor to="/author-form"> New Author </Anchor></li>
+           {role=== 0 ?   <li onClick={() => setMenu(!menu)} className='p-4 text-white font-semibold'> <Anchor to="/author-form"> New Author </Anchor></li> :null} 
               </ul>
               </div>
 

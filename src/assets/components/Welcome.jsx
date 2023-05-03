@@ -10,7 +10,9 @@ export default function Welcome() {
           <h1 className=' font-poppins text-white font-bold text-3xl w-[80%] text-center sm:w-[70%] sm:text-left xl:text-6xl'>For the love of manga</h1>
           <h3 className='font-poppins text-white  p-2 text-center sm:font-normal xl:text-2xl'>Explore our varieties</h3>
           <h4 className='font-poppins text-white p-2 hidden font-semibold sm:block xl:text-1xl'>#MingaLove❤</h4>
+          <Buttons className='font-roboto hidden border sm:block bg-white rounded-md text-orange-500 font-bold xl:px-20 py-2 px-12 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200'>Sign In!</Buttons>
           <Buttons/>
+          <Buttons className="font-roboto bg-white rounded-md text-orange-500 font-bold py-2 px-24 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200 sm:hidden ">Let's go!</Buttons>
         
     </div>
   </div>
