@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import profileImage from "../../../public/img/imageprofile.png";
 import axios from "axios";
 import Swal from "sweetalert2";
+import apiUrl from "../../../api";
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import Buttons from "./Buttons";
 function AuthorFormComponent() {
@@ -80,7 +81,7 @@ function AuthorFormComponent() {
       photo: photo.current.value,
     };
     axios
-      .post("http://localhost:8000/authors", data)
+      .post( apiUrl  +'authors', data)
       .then((res) => {
         setHasError(false);
         navigate("/");
