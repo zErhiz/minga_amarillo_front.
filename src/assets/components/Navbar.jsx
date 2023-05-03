@@ -3,9 +3,16 @@ import imagenmenu from '../../../public/img/Menu.png'
 import ultima from '../../../public/img/ultimaimage.png'
 import userImage from '../../../public/img/killua.png'
 import closeImage from '../../../public/img/close.png'
+import { Link as Anchor, useNavigate } from "react-router-dom"
 export default function Navbar() {
 let [menu,setMenu] = useState(false)
 console.log(menu)
+
+
+
+let user = JSON.parse(localStorage.getItem('user'))
+let role = user ? user.role : null
+
   return (
     
     <> 
@@ -39,8 +46,13 @@ console.log(menu)
               <li className='bg-white w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-orange-500 font-bold'><a href="#">Home</a></li>
               <li className='p-4 text-white font-semibold'><a href="#">Comics</a></li>
               <li className='p-4 text-white font-semibold'><a href="#">My Comics</a></li>
-              <li className='p-4 text-white font-semibold'> <a href="#">Favorites</a></li>
-              <li className='p-4 text-white font-semibold'> <a href="#">Logout</a></li>
+              <li className='p-4 text-white font-semibold'><a href="#">Favorites</a></li>
+              <li className='p-4 text-white font-semibold'><a href="#">Logout</a></li>
+              {role === 1 || role === 2 ? ( <li className='p-4 text-white font-semibold'> <Anchor to="/mangas-form"> New Manga</Anchor></li>):
+              (null
+              
+            )}
+
               </ul>
               </div>
 

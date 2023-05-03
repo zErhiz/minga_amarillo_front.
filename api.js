@@ -1,4 +1,4 @@
-let apiUrl = 'https://minga-amarillo-back-xeji.onrender.com/'
+let apiUrl = 'localhost:8000/api'
 
 if (process.env.NODE_ENV==='production') {
     apiUrl = import.meta.env.VITE_API
