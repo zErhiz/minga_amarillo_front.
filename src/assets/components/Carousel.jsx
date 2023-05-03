@@ -16,12 +16,12 @@ export default function Carousel() {
 
   const [categories, setCategories] = useState([])
   const [counter, setCounter] = useState(0)
- 
+
   useEffect(() => {
   
     const valorInterval = setInterval(() => {
       setCounter(prevCounter => {
-        if (prevCounter === categories.length - 1) {
+        if (prevCounter >= categories.length - 1) {
           return 0
         } else {
           return prevCounter + 1
@@ -55,15 +55,15 @@ export default function Carousel() {
 
   //el hook puede ir aca pero lo correcto es en las primeras lineas
   return (
-    <>  <main className="hidden bg-white sm:block sm:p-10 lg:p-16 xl:p-12 "> 
+    <>  <main className="hidden bg-white sm:block sm:p-10 md:py-7 lg:py-24 xl:p-12 sm:h-[40vh]"> 
   
     <div className="  flex sm:flex-row justify-between items-center gap-4 lg:gap-20 "style={{ background: `linear-gradient(to bottom, ${categories[counter]?.color}, ${categories[counter]?.hover})` }}>
   <div className="flex sm:w-1/4 items-center justify-center  ">
     <img onClick={arrowPrev}src={flechaizq} alt="" className="w-8 h-8 flex justify-start  cursor-pointer" />
   </div>
   <div className="flex sm:w-1/2 items-center justify-center sm:gap-4 lg:gap-20 xl:gap-40 ">
-    <img src={categories[counter]?.character_photo} alt="nami" className=" sm:h-50 sm:ml-4 sm:mt-[-2rem] lg:mt-[-5rem]  xl:h-60 xl:ml-[-9rem] xl:mt-[-4rem] sm:max-w-[80%] sm:max-h-[30vh] sm:min-h-[30vh] md:max-w-[70%] md:max-h-[40vh] md:min-h-[40vh] lg:max-h-[20vh] lg:min-h-[20vh] xl:max-h-[30vh] xl:min-h-[30vh] " />
-    <img src={categories[counter]?.cover_photo} alt="luffy" className="sm:h-50 sm:mt-[-2rem] xl:h-60 lg:mt-[-5rem]  xl:ml-[-2rem] xl:mt-[-4rem] sm:max-w-[80%] sm:max-h-[30vh] sm:min-h-[30vh] lg:max-h-[20vh] lg:min-h-[20vh] xl:max-h-[30vh] xl:min-h-[30vh]" />
+    <img src={categories[counter]?.character_photo} alt="nami" className=" sm:h-50 sm:ml-4 sm:mt-[-2rem] lg:mt-[-5rem]  xl:h-60 xl:ml-[-9rem] xl:mt-[-4rem] sm:max-w-[80%] sm:max-h-[30vh] sm:min-h-[30vh] md:max-w-[70%] md:max-h-[40vh] md:min-h-[40vh] lg:max-h-[25vh] lg:min-h-[25vh] xl:max-h-[30vh] xl:min-h-[30vh] " />
+    <img src={categories[counter]?.cover_photo} alt="luffy" className="sm:h-50 sm:mt-[-2rem] xl:h-60 lg:mt-[-5rem]  xl:ml-[-2rem] xl:mt-[-4rem] sm:max-w-[80%] sm:max-h-[30vh] sm:min-h-[30vh] lg:max-h-[25vh] lg:min-h-[25vh] xl:max-h-[30vh] xl:min-h-[30vh]" />
   </div>
   <div className="flex sm:w-1/4 items-center justify-center xl:w-0 "></div>
   <div className="w-full sm:w-1/2  xl:mt-[4rem] ">
