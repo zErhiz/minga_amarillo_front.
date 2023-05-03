@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link as Anchor } from 'react-router-dom'
 
-export default function buttons() {
+export default function buttons(props) {
   return (
-    <div> <button className='font-roboto hidden border sm:block bg-white rounded-md text-orange-500 font-bold xl:px-20 py-2 px-12 border-orange-500 
-    hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200'><Anchor to='/auth'>Sign in!</Anchor></button>
-    <div className=''>
-      <button className="font-roboto bg-white rounded-md text-orange-500 font-bold py-2 px-24 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200 sm:hidden ">Let's go!</button>
-    </div></div>
+
+    <div>   <button
+    type={props.type}
+    className={props.className}
+    onClick={props.onClick}
+  >
+    {props.children}
+  </button>
+    </div>
+
   )
 }
