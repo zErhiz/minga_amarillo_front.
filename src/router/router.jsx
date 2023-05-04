@@ -8,6 +8,7 @@ import ChapterForm from "../assets/components/ChapterForm.jsx";
 import SignUp from '../../src/assets/pages/SignUp'
 import  Login  from '../../src/assets/pages/Login'
 import MangaForm from '../../src/assets/components/MangaForm.jsx'
+import CompanyForm from '../assets/pages/CompanyForm';
 const routes = createBrowserRouter(
 
   [
@@ -31,6 +32,9 @@ const routes = createBrowserRouter(
       },
       {
         path:'/auth', element:<Login/>
+      },
+      {
+        path:'/cia-form', element:<CompanyForm/>
       },
     ]}
   ])

@@ -134,6 +134,15 @@ export default function Navbar() {
                     <Anchor to="/author-form"> New Author </Anchor>
                   </li>
                 ) : null}
+                 {role === 0 ? (
+                  <li
+                    onClick={() => setMenu(!menu)}
+                    className="p-4 text-white font-semibold"
+                  >
+                    {" "}
+                    <Anchor to="/cia-form"> New Company </Anchor>
+                  </li>
+                ) : null}
                 {role === 1 || role === 2 ? (
                   <li
                     onClick={() => setMenu(!menu)}
