@@ -55,7 +55,37 @@ let headers = { headers: { 'Authorization': `Bearer ${token}` } }
      
     axios.post(apiUrl + 'mangas',data,headers)
      .then(res=> { navigate("/"); console.log(res);})
-     .catch(err=> console.log(err))
+     .catch((error) => {  if(error.response.data === "Unauthorized"){
+      console.log(error.response.data === "Unauthorized");
+      swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'The user needs to be logged in',
+        showConfirmButton: false,
+        timer: 2500
+      })}
+      else {
+        if(typeof error.response.data.message === "string"){
+          console.log(typeof error.response.data.message === "string");
+          swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: error.response.data.message,
+            showConfirmButton: false,
+            timer: 2500
+          })
+        } else {
+          error.response.data.message.forEach(err =>  swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: err,
+            showConfirmButton: false,
+            timer: 2500
+          })  )
+        }
+      }
+
+ } )
     
   }
 
