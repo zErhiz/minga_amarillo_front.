@@ -131,7 +131,7 @@ function AuthorFormComponent() {
   const [invalidLastName, setInvalidLastName] = useState(false);
   return (
     <>
-      <div className="border border-black h-screen flex flex-col justify-center content-center items-center ">
+      <div className=" h-screen flex flex-col justify-center content-center items-center ">
         <h2 className="text-2xl mt-12 lg:text-4xl sm:hidden">New Author</h2>
         <div className="flex flex-col justify-evenly h-4/6 items-center  sm:absolute sm:w-5/6 sm:z-10 sm:rounded-[10px] sm:top-[10.5rem] md:top-[13rem] lg:top-[25.5rem] lg:w-5/6 sm:bg-white sm:flex-row-reverse xl:top-[27rem] lg:h-[50vh]">
           <div className="sm:mb-20">
