@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom"
 import Swal from "sweetalert2"
 import apiUrl from "../../../api.js"
 import Error from "./Error.jsx"
-
+import { Link as Anchor, useNavigate } from "react-router-dom";
 export default function ChapterForm() {
-    
+const navigate = useNavigate();
 let title = useRef()
 let order = useRef()
 let pages = useRef()
@@ -31,18 +31,20 @@ async function handleForm(e){
   }
   try {
     await axios.post(apiUrl + "chapters", data, headers)
+    navigate("/");
     Swal.fire({
-      position: 'top-end',
+      position: 'center',
       icon: 'success',
       title: 'The chapter was created',
       showConfirmButton: false,
       timer: 2500
     })
+
   } catch (error) {
     if(error.response.data === "Unauthorized"){
       console.log(error.response.data === "Unauthorized");
       Swal.fire({
-        position: 'top-end',
+        position: 'center',
         icon: 'error',
         title: 'The user needs to be logged in',
         showConfirmButton: false,
@@ -51,7 +53,7 @@ async function handleForm(e){
         if(typeof error.response.data.message === "string"){
           console.log(typeof error.response.data.message === "string");
           Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'error',
             title: error.response.data.message,
             showConfirmButton: false,
@@ -59,7 +61,7 @@ async function handleForm(e){
           })
         } else {
           error.response.data.message.forEach(err =>  Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'error',
             title: err,
             showConfirmButton: false,
