@@ -1,10 +1,11 @@
 import React,{useRef, useState, useEffect}from 'react'
+import { Link as Anchor, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import swal from 'sweetalert2';
 import apiUrl from "../../../api";
 import Error from './Error';
 function Formulario() {
-
+  const navigate = useNavigate();
 
 let [categories, setCategories] = useState([]);
 
@@ -21,12 +22,9 @@ const category = () => {
     </option>
   ))
 }
-
-  
-let user = localStorage.getItem("user");
-
+let token = localStorage.getItem('token')
 let role = JSON.parse(localStorage.getItem('user'))?.role
-let token = localStorage.getItem("token");
+let headers = { headers: { 'Authorization': `Bearer ${token}` } }
     let title= useRef();
     let category_id= useRef();
     let description= useRef();
@@ -56,7 +54,7 @@ let token = localStorage.getItem("token");
     console.log(data)
      
     axios.post(apiUrl + 'mangas',data,headers)
-     .then(res=> console.log(res))
+     .then(res=> { navigate("/"); console.log(res);})
      .catch(err=> console.log(err))
     
   }
