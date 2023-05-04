@@ -1,17 +1,32 @@
-import React,{useRef}from 'react'
+import React,{useRef, useState, useEffect}from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2';
-
+import apiUrl from "../../../api";
+import Error from './Error';
 function Formulario() {
-  let user = JSON.parse(localStorage.getItem('user'))
-let role = user ? user.role : null
 
-    const categories = ['Shonen','Comic','Shojo','Seinen']
 
-    let apiUrl='http://localhost:8000/mangas'
-    let token=localStorage.getItem('token')
-    let headers ={headers: {'authorization': `bearer ${token}`}} 
-    
+let [categories, setCategories] = useState([]);
+
+useEffect(() => {
+  axios(apiUrl+'categories')
+    .then(res => setCategories(res.data.categories))
+    .catch(err => console.log(err));
+}, []);
+console.log();
+const category = () => {
+  return categories.map(categoria => (
+    <option key={categoria._id} value={categoria._id}>
+      {categoria.name}
+    </option>
+  ))
+}
+
+  
+let user = localStorage.getItem("user");
+
+let role = JSON.parse(localStorage.getItem('user'))?.role
+let token = localStorage.getItem("token");
     let title= useRef();
     let category_id= useRef();
     let description= useRef();
@@ -40,7 +55,7 @@ let role = user ? user.role : null
       }
     console.log(data)
      
-    axios.post(apiUrl,data,Headers)
+    axios.post(apiUrl + 'mangas',data,Headers)
      .then(res=> console.log(res))
      .catch(err=> console.log(err))
     
@@ -48,7 +63,7 @@ let role = user ? user.role : null
 
 
   return (
-   /*  <>{ role ===1 || role === 2 ?(  */
+     <>{ role ===1 || role === 2 ?(  
     <div  className=' mt-20  sm:mt-36 w-screnn h-screen  flex flex-col justify-center items-center'>
           <h2 className='h- text-3xl text-orange-500  sm:text-6xl'> New Manga</h2>
     <form  className='w-[80%] mt-5 sm:mt-10  h-screen  flex flex-col justify-center items-center content-center' action="" onSubmit={handleSubmit} >
@@ -60,19 +75,13 @@ let role = user ? user.role : null
       <label  className=''>
    
       <select
-              className='w-44 sm:mt-5 sm:w-[60vh] border-b border-black px-4 sm:text-2xl'
-              defaultValue=''
-              ref={category_id}
-            >
-              <option disabled value=''>
-                insert category
-              </option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+    className='w-44 sm:mt-5 sm:w-[60vh] border-b border-black px-4 sm:text-2xl'
+    ref={category_id}>
+    <option>
+        insert category
+            </option>
+        {category()}
+</select>
       </label>
       <label>
         <textarea className=' w-44 sm:mt-5 sm:mb-[2rem] sm:w-[60vh] border-b border-black px-4 sm:text-2xl '  placeholder="Insert Description" ref={description}
@@ -85,7 +94,7 @@ let role = user ? user.role : null
    </form>
  
     </div>
- /*  ): null} </>  */ )
+   ): <Error/>} </>   )
 }
 
 export default Formulario         

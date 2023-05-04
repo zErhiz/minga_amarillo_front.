@@ -4,18 +4,17 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 import Swal from "sweetalert2"
 import apiUrl from "../../../api.js"
-
+import Error from "./Error.jsx"
 
 export default function ChapterForm() {
     
 let title = useRef()
 let order = useRef()
 let pages = useRef()
-// let id = useParams()
-// console.log(id);
+let user = localStorage.getItem("user");
 
-// let user = JSON.parse(localStorage.getItem('user'));
-// let role = user ? user.role : null;
+let role = JSON.parse(localStorage.getItem('user'))?.role
+let token = localStorage.getItem("token");
 
 async function handleForm(e){
   e.preventDefault()
@@ -73,7 +72,8 @@ async function handleForm(e){
 }
   return (
     <>
-    
+   {role === 1 || role === 2 ?
+    <>
 
     <form onSubmit={(e)=>handleForm(e)} action="" className="w-full h-screen flex flex-col justify-center gap-9 items-center">
       <p className="text-[34px] min-[320px]:w-[65vw] md:text-[40px] sm:mt-[50px] md:mt-[70px] lg:text-[60px] text-center">New Chapter</p>
@@ -82,7 +82,8 @@ async function handleForm(e){
       <input className="border-b-slate-800 border  px-4 rounded w-[20%] min-[320px]:w-[65vw] md:h-[40px] lg:h-[60px]" type="text" placeholder="Insert order" ref={order} id='order'/>
       <input className=" py-2 px-4 rounded-full bg-orange-500 w-[15%] text-white min-[320px]:w-[55vw] md:h-[50px] lg:h-[60px]" type="submit"  value="send"/>
     </form>
-    
+    </>
+    : <Error/>} 
     </>
   )
 }

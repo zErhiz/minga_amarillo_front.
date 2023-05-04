@@ -3,9 +3,11 @@ import ultima from '../../../public/img/ultimaimage.png'
 import { useRef } from "react"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import apiUrl from "../../../api";
 import  Swal from 'sweetalert2'
 import SignUp from "./SignUp.jsx"
 import { Navigate, useNavigate } from "react-router-dom"
+import Error from "../components/Error"
 import { redirect } from "react-router-dom"
 export const Login = (props) => {
 
@@ -22,7 +24,7 @@ export const Login = (props) => {
       email:email.current.value, 
       password:password.current.value
     }
-    axios.post('http://localhost:8000/auth/signin', data)
+    axios.post(apiUrl +'auth/signin', data)
     .then(res=> {
       Swal.fire({
         title: 'Signed in!',
@@ -96,7 +98,7 @@ export const Login = (props) => {
    
    </div>
 </>
-:null}
+:<Error/>}
 </>
   )
 }

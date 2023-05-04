@@ -6,9 +6,11 @@ import Error from '../components/Error';
 import { Link as Anchor, useNavigate } from 'react-router-dom'
 import AuthorFormComponent from '../components/AuthorFormComponent';
 import WelcomeAuthorForm from '../components/WelcomeAuthorForm';
-let token = localStorage.getItem('token')
-let headers = {headers:{'Authorization':`Bearer ${token}`}}
+let user = localStorage.getItem("user");
+
 let role = JSON.parse(localStorage.getItem('user'))?.role
+let token = localStorage.getItem("token");
+
 export default function AuthorForm() {
  
   return (

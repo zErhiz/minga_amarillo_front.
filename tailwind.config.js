@@ -25,7 +25,7 @@ module.exports = {
       'bgnaranja': "url('../public/img/rectangulonaranja.png')",
 
       'bgform':"url('../public/img/BGFORM.png')",
-      'bgform2':"url('../public/img/BGFORM2.PNG')"
+      'bgform2':"url('../public/img/BGFORM2.PNG')",
 
       'bgauthors': "url('../public/img/authors.png')"
 

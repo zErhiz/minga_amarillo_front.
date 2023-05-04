@@ -4,7 +4,9 @@ import Buttons from '../components/Buttons'
 import { useRef } from 'react'
 import Swal from 'sweetalert2'
  import axios from 'axios'
+ import apiUrl from "../../../api";
  import { Navigate, useNavigate } from "react-router-dom"
+ import Error from '../components/Error'
 export const SignUp = () => {
   const navigate = useNavigate()
   
@@ -21,7 +23,7 @@ export const SignUp = () => {
 
     
     }
-    axios.post("http://localhost:8000/auth/signup", data)
+    axios.post(apiUrl + 'auth/signup', data)
     .then(res=> {
       Swal.fire({
         title: 'User registered',
@@ -88,7 +90,7 @@ export const SignUp = () => {
         
     </div>
   </>
-  :null}
+  :<Error/>}
   </>
   )
 }
