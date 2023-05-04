@@ -14,7 +14,8 @@ function AuthorFormComponent() {
   const date = useRef();
   function handleForm(e) {
     e.preventDefault();
-
+    let token = localStorage.getItem('token')
+    let headers = { headers: { 'Authorization': `Bearer ${token}` } }
     const [city, country] = city_and_country.current.value.split(",");
 
     if (!city || !country) {
@@ -81,23 +82,56 @@ function AuthorFormComponent() {
       photo: photo.current.value,
     };
     axios
-      .post( apiUrl  +'authors', data)
+      .post( apiUrl  +'authors', data,headers)
       .then((res) => {
         setHasError(false);
         navigate("/");
         console.log(res);
+        let user = JSON.parse(localStorage.getItem("user"));
+user.role = 1;
+localStorage.setItem("user", JSON.stringify(user)); 
       })
-      .catch((err) => {
-        console.log(err.response);
-        if (err.response && err.response.status === 400) {
-          setHasError(true);
+      .catch((error) => {
+        console.log(error.response);
+        if (error.response && error.response.status === 400) {
+          
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "there is already an author with this name or check that the profile image is not valid!",
           });
+          if(error.response.data === "Unauthorized"){
+            console.log(error.response.data === "Unauthorized");
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'The user needs to be logged in',
+              showConfirmButton: false,
+              timer: 2500
+            })} else {
+              if(typeof error.response.data.message === "string"){
+                console.log(typeof error.response.data.message === "string");
+                Swal.fire({
+                  position: 'center',
+                  icon: 'error',
+                  title: error.response.data.message,
+                  showConfirmButton: false,
+                  timer: 2500
+                })
+              } else {
+                error.response.data.message.forEach(err =>  Swal.fire({
+                  position: 'center',
+                  icon: 'error',
+                  title: err,
+                  showConfirmButton: false,
+                  timer: 2500
+                })  )
+              }
+            }
+
+          
         } else {
-          console.log(err);
+          console.log(error);
         }
       });
     console.log(data);
