@@ -55,7 +55,7 @@ let token = localStorage.getItem("token");
       }
     console.log(data)
      
-    axios.post(apiUrl + 'mangas',data,Headers)
+    axios.post(apiUrl + 'mangas',data,headers)
      .then(res=> console.log(res))
      .catch(err=> console.log(err))
     
