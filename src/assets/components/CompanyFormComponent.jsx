@@ -22,7 +22,7 @@ export default function CompanyFormComponent() {
       description: description.current.value,
     };
     axios
-      .post(apiUrl + "authors", data)
+      .post(apiUrl + "companies", data)
       .then((res) => {
         navigate("/");
         console.log(res);
