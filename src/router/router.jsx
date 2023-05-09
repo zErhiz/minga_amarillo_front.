@@ -1,5 +1,4 @@
 
-
 import { createBrowserRouter } from 'react-router-dom'
 import Main from '../../src/App'
 import Layout from '../../src/assets/layouts/Main'
@@ -9,6 +8,9 @@ import SignUp from '../../src/assets/pages/SignUp'
 import  Login  from '../../src/assets/pages/Login'
 import MangaForm from '../../src/assets/components/MangaForm.jsx'
 import CompanyForm from '../assets/pages/CompanyForm';
+import Manga from '../assets/components/manga';
+
+
 const routes = createBrowserRouter(
 
   [
@@ -36,6 +38,11 @@ const routes = createBrowserRouter(
       {
         path:'/cia-form', element:<CompanyForm/>
       },
+      {
+        path:'/manga/:id/:page',element: <Manga/>
+      }
+      
+      
     ]}
   ])
   export default routes

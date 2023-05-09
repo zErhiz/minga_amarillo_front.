@@ -23,8 +23,9 @@ const category = () => {
   ))
 }
 let token = localStorage.getItem('token')
-let role = JSON.parse(localStorage.getItem('user'))?.role
 let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+
+let role = JSON.parse(localStorage.getItem('user'))?.role
     let title= useRef();
     let category_id= useRef();
     let description= useRef();
@@ -91,7 +92,8 @@ let headers = { headers: { 'Authorization': `Bearer ${token}` } }
 
 
   return (
-     <>{ role ===1 || role === 2 ?(  
+     <>
+     { role ===1 || role === 2 ?(  
     <div  className=' mt-20  sm:mt-36 w-screnn h-screen  flex flex-col justify-center items-center'>
           <h2 className='h- text-3xl text-orange-500  sm:text-6xl'> New Manga</h2>
     <form  className='w-[80%] mt-5 sm:mt-10  h-screen  flex flex-col justify-center items-center content-center' action="" onSubmit={handleSubmit} >
