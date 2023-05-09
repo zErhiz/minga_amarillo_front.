@@ -9,6 +9,7 @@ import SignUp from '../../src/assets/pages/SignUp'
 import  Login  from '../../src/assets/pages/Login'
 import MangaForm from '../../src/assets/components/MangaForm.jsx'
 import CompanyForm from '../assets/pages/CompanyForm';
+import Manga from '../assets/components/Manga';
 const routes = createBrowserRouter(
 
   [
@@ -36,6 +37,9 @@ const routes = createBrowserRouter(
       {
         path:'/cia-form', element:<CompanyForm/>
       },
+      {
+        path:'/mangas', element:<Manga/>
+      }
     ]}
   ])
   export default routes
