@@ -149,7 +149,7 @@ export default function Navbar() {
                     className="p-4 text-white font-semibold"
                   >
                     {" "}
-                    <Anchor to="/chapters/:id">New Chapter</Anchor>
+                    <Anchor to="/chapters-form">New Chapter</Anchor>
                   </li>
                 ) : null}
               </ul>
@@ -160,3 +160,5 @@ export default function Navbar() {
     </>
   );
 }
+
+// /mangas/${chapters.manga_id}/1

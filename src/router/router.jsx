@@ -9,6 +9,7 @@ import SignUp from '../../src/assets/pages/SignUp'
 import  Login  from '../../src/assets/pages/Login'
 import MangaForm from '../../src/assets/components/MangaForm.jsx'
 import CompanyForm from '../assets/pages/CompanyForm';
+import ReadChapter from '../assets/components/ReadChapter';
 const routes = createBrowserRouter(
 
   [
@@ -17,7 +18,8 @@ const routes = createBrowserRouter(
       {path:'/mangas-form',element: <MangaForm/> },
       {path:'/', element:<Main/> },
       {path:'/author-form', element:<Authorform/>},
-      {path: "/chapters/:id", element: <ChapterForm/> },
+      {path: "/chapters-form", element: <ChapterForm/> },
+      {path: "/chapters/:id/:page", element: <ReadChapter/>  },
       {
         path:'/', element:<Main/>
       },
