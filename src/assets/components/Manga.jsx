@@ -9,15 +9,16 @@ import sorprendido from '../../../public/img/sorprendido.png'
 import love from '../../../public/img/love.png'
 import { useSelector,useDispatch } from 'react-redux'
 import action_manga from '../../store/actions/manga_one'
-
+import action_chapter from '../../store/actions/chapter_one'
 
 const {manga_one}=action_manga
+const {chapter_one}=action_chapter
 
  //objeto con todas las acciones 
 export default function Manga() {
 
   let store=useSelector(store=>console.log(store))
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   //con useselector seleccione los estados que necesito
   
   let [chapter,setChapter]= useState([{data:[],totalPages:1}])
@@ -47,11 +48,20 @@ export default function Manga() {
 
 useEffect(() => {
   axios.get(apiUrl+`chapters?manga_id=${id}&page=${page}&limit=4`)
-    .then(res => setChapter(res.data.all))
+    .then(res =>  {const data=res.data.all
+            setChapter(data)
+            data.map(chapter =>{
+              dispatch(chapter_one({
+                title:chapter.title,
+                order:chapter.order,
+                cover_photo:chapter.cover_photo,
+              }))
+            })})
     .catch(err => console.log(err))
 },
   [id,page,reload]
 )
+
 
 useEffect(() => {
   axios(`${apiUrl}mangas/${id}`)
