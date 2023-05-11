@@ -36,12 +36,11 @@ export default function Navbar() {
       <header className="">
         <nav className="flex justify-center  ">
           <div className=" absolute top-[0rem] sm:top-[-2rem] flex items-center mt-4 justify-between w-5/6  xl:mt-10">
-            <img
-              onClick={() => setMenu(!menu)}
-              className="sm:h-8 sm:mt-9 lg:mt-7 xl:h-12 cursor-pointer"
-              src={imagenmenu}
-              alt=""
-            />
+            
+            <svg    className="sm:h-8 sm:mt-10 lg:mt-12 xl:h-12 h-12 cursor-pointer text-orange-500"   onClick={() => setMenu(!menu)}  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+</svg>
+
             <div className="sm:flex  sm:items-center sm:mt-9 sm:gap-4  sm:flex-row">
               <h2 className="hidden sm:block text-orange-500 text-2xl xl:text-4xl">
                 Minga
