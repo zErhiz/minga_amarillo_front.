@@ -7,9 +7,7 @@ const {chapter_one} = chapter_action
 
 //defino estado inicial
 let initial_state = {
-  title: '',
-  order:'',
-  cover_photo: '',
+  chapters:[]
 }
 
 const reducer = createReducer (
@@ -20,9 +18,7 @@ const reducer = createReducer (
     (state, action) => {
       const new_state = {
         ...state, 
-        title: action.payload.title,
-        cover_photo: action.payload.cover_photo,
-       order:action.payload.order,
+        chapters: action.payload.data,
       }
       return new_state
     }

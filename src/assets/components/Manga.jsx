@@ -80,7 +80,7 @@ const Manga = () => {
       <Cards
         title={m.title}
         img={m.cover_photo}
-        props={() => navigate(`/manga/${m._id}`)}
+        props={() => navigate(`/manga/${m._id}/:page`)}
       />
     );
   });

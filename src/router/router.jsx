@@ -36,7 +36,7 @@ const routes = createBrowserRouter([
         path:'/mangas/:page', element:<Manga/>
       },
        {
-        path:'/manga/:id',element: <Manga2/>
+        path:'/manga/:id/:page',element: <Manga2/>
       }
 
     ],

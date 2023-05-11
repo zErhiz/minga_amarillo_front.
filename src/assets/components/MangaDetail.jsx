@@ -23,11 +23,11 @@ export default function Manga() {
   const dispatch = useDispatch()
   //con useselector seleccione los estados que necesito
   
+  let [count,setCount]=useState(0) 
   let [chapter,setChapter]= useState([{data:[],totalPages:1}])
   let [mangas, setMangas] = useState([]);
-  console.log(chapter)
 
-console.log(chapter[0]._id)
+  console.log(chapter)
 
    const params = useParams()
   const {id}= useParams()
@@ -50,15 +50,14 @@ console.log(chapter[0]._id)
 
 useEffect(() => {
   axios.get(apiUrl+`chapters?manga_id=${id}&page=${page}&limit=4`)
-    .then(res =>  {const data=res.data.all 
-            setChapter(data)
-            data.map(chapter =>{
-              dispatch(chapter_one({
-                title:chapter.title,
-                order:chapter.order,
-                cover_photo:chapter.cover_photo,
-              }))
-            })})
+    .then(res =>{
+      const data=res.data.response
+        setChapter(data)
+        dispatch(chapter_one(data))
+       setCount(res.data.count) 
+
+
+    })
     .catch(err => console.log(err))
 },
   [id,page,reload]
@@ -154,12 +153,11 @@ useEffect(() => {
     )
     
     )} 
-   <div className='  flex justify-around'>
+
+   {count >= 5 &&<div className='mb-10  flex justify-around'>
    {page != 1 &&<input className={`w-20 h-6 bg-[#F97316] rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='previus' onClick={PREV}></input>}
    {chapter && chapter.length > 0 && chapter[chapter.length - 1].totalPages !== page && <input className={`w-20 h-6 bg-zinc-600 rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='next' onClick={NEXT}></input>}
-
-
-   </div>
+   </div>}
   </div>
 </div>
 
