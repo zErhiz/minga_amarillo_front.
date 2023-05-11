@@ -84,7 +84,7 @@ useEffect(() => {
       <>
 
 {showMangaContent ? (
-    <div className=' bg-[#EBEBEB] mt-24  min-h-screen w-screen  flex flex-col justify-center items-center sm:mt-24'>
+    <div className='  mt-24  min-h-screen w-screen  flex flex-col justify-center items-center sm:mt-24'>
     
     <img className='  rounded-2xl h-[16rem] w-[90%] sm:bg-cover  sm:w-[50vw] sm:h-[30rem]'  src={mangas.cover_photo}  />  
  
@@ -98,9 +98,9 @@ useEffect(() => {
        <img className= 'h-12 sm:h-24' src={finger1}alt="" />
         <img className= 'h-12 sm:h-24' src={finger2}alt="" />
         <img className= 'h-12 sm:h-24'src={sorprendido}alt="" />
-         <img className= 'h-12 sm:h-24'src={love}a lt="" />
+         <img className= 'h-12 sm:h-24'src={love} alt="" />
         </div>
-        <div className='mt-4 flex justify-evenly items-center content-center h-20  w-[90%] border border-black rounded-2xl sm:h-24 '>
+        <div className=' bg-[#EBEBEB] drop-shadow-2xl mt-4 flex justify-evenly items-center content-center h-20  w-[90%] rounded-2xl sm:h-24 '>
         <div   className=' flex flex-col border-r-2 border-black    '>
             <h2 className=' font-bold sm:text-3xl '>4.5/5</h2>
             <h6 className=' sm:text-xl'>Rating</h6>
@@ -167,6 +167,5 @@ useEffect(() => {
 }
 
 
-{/*  <img className='h-[16rem] w-[90%] bg-cover rounded-xl sm:w-[50vw] sm:h-[22rem]'src={mangas.cover_photo}/> */}
 
-/* bg-[-#FFE0DF] */
+ 
