@@ -161,4 +161,3 @@ export default function Navbar() {
   );
 }
 
-// /mangas/${chapters.manga_id}/1

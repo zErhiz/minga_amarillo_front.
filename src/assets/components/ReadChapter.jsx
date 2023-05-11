@@ -65,10 +65,10 @@ function ReadChapter() {
 
   return (
     <div className="w-screen h-screen">
-      <div className="w-screen h-[15%] bg-orange-500  flex justify-center items-center">
-        <p className="text-white">°n {store.page}  Cap -   {store.title}</p>
+      <div className="w-screen h-[12%] bg-orange-500  flex justify-center items-center max-[425px]:mt-[75px] max-[425px]:h-[8%]">
+        <p className="text-white text-[25px] max-[425px]:text-[20px]">°n {store.page}  Cap -   {store.title}</p>
       </div>
-      <div className=" w-screen h-[75%] flex items-center justify-evenly">
+      <div className=" w-screen h-[80%] flex items-center justify-evenly max-[425px]:h-[70%]">
         <img
           onClick={handleBefore}
           src={flechaizq}
@@ -79,7 +79,7 @@ function ReadChapter() {
         <img
           src={chapters?.pages[change]}
           alt="page"
-          className="bg-gray-50 w-[80%] h-[100%] bg-contain z-0"
+          className="bg-gray-50 w-[80%] h-[100%] bg-contain -z-0"
         />
         
         <button onClick={handleNext} className="w-[50%] h-[100%] cursor-pointer z-10 "  ></button>
@@ -90,10 +90,10 @@ function ReadChapter() {
           className=" w-8 h-8  cursor-pointer "
         />
       </div>
-      <div className="bg-slate-200 w-screen h-[10%] flex justify-center items-center">
+      <div className="bg-slate-200 w-screen h-[8%] flex justify-center items-center gap-2">
         <img src={messege} alt="" className="w-6" />
         <p className="flex justify-center items-center text-sm text-black">
-          42
+           42
         </p>
       </div>
     </div>
