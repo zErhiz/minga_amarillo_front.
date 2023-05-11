@@ -149,7 +149,7 @@ export default function Navbar() {
                     className="p-4 text-white font-semibold"
                   >
                     {" "}
-                    <Anchor to="/chapters/:id">New Chapter</Anchor>
+                    <Anchor to="/chapters-form">New Chapter</Anchor>
                   </li>
                 ) : null}
                         <li onClick={() => setMenu(!menu)} className="p-4 text-white font-semibold">
@@ -164,3 +164,4 @@ export default function Navbar() {
     </>
   );
 }
+
