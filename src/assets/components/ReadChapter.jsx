@@ -42,6 +42,7 @@ function ReadChapter() {
       if (change >= chapters?.pages.length - 1) {
         //   setChange(0);
           navigate(`/chapters/${next}/${0}`)
+          setReload(!reload);
         }
   };
 
@@ -58,7 +59,15 @@ function ReadChapter() {
         title,
         page
     }))
-    
+    useEffect(() => {
+      function reloadPage() {
+        window.location.reload();
+      }
+  
+      if (reload) {
+        reloadPage();
+      }
+    }, [reload]);
   }
 
 

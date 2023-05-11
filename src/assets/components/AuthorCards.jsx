@@ -8,6 +8,7 @@ import inputs_filter_actions from "../../store/actions/inputs_filter_switch"; //
 import { useParams } from "react-router-dom";
 import { Link as Anchor } from "react-router-dom";
 function AuthorCards() {
+ 
   const [contador, setContador] = useState();
   const [mangas, setMangas] = useState(null);
   let params = useParams();
@@ -76,7 +77,7 @@ function AuthorCards() {
                     alt=""
                   />
                 </Anchor>
-                <h2 className="text-[#424242] text-1xl text-center lg:text-3xl xl:text-4xl">
+                <h2 className="text-[#424242] text-1xl text-center lg:text-3xl xl:text-4xl -mt-4">
                   {each?.title}
                 </h2>
               </div>
