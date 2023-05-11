@@ -10,6 +10,7 @@ import love from '../../../public/img/love.png'
 import { useSelector,useDispatch } from 'react-redux'
 import action_manga from '../../store/actions/manga_one'
 import action_chapter from '../../store/actions/chapter_one'
+import { Link as Anchor } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 const {manga_one}=action_manga
 const {chapter_one}=action_chapter
@@ -93,8 +94,9 @@ useEffect(() => {
         <p></p>
         <div className='w-[90%] flex justify-between mt-3'>
             <button className='bg-[#FFE0DF] text-[#EF8481] rounded-xl w-16 h-9 text-lg sm:text-3xl sm:w-24 sm:h-11 '>{mangas.category_id?.name}</button> 
-            <h3 className='sm:text-3xl'>{mangas.author_id?.name}</h3>
+          <Anchor   to={`/author/${mangas?.author_id?._id}`} > <h3 className='sm:text-3xl'>{mangas.author_id?.name}</h3> </Anchor>
         </div>
+       
         <div className='flex justify-evenly w-full mt-8 '>
        <img className= 'h-12 sm:h-24' src={finger1}alt="" />
         <img className= 'h-12 sm:h-24' src={finger2}alt="" />
@@ -108,7 +110,7 @@ useEffect(() => {
         </div>
         <div className=' flex flex-col  items-center '>
             <h2 className=' font-bold sm:text-3xl'>265</h2>
-            <h6 className=' sm:text-xl'>Chah6ters</h6>
+            <h6 className=' sm:text-xl'>Chapters</h6>
         </div>
         <div className=' flex flex-col items-center'>
             <h2 className=' font-bold sm:text-3xl'>Eng</h2>
