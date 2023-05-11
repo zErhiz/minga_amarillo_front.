@@ -21,7 +21,7 @@ function ReadChapter() {
   const [change, setChange] = useState(Number(page));
   const navigate = useNavigate();
   const [next, setNext] = useState("");
-  
+  const [reload, setReload] = useState(false);
 
 //   console.log(chapters);
 
@@ -51,6 +51,7 @@ function ReadChapter() {
       navigate(`/chapters/${id}/${change}`);
     if (change <= 0) {
       navigate(`/manga/${chapters.manga_id}`);
+      setReload(!reload);
     } 
   };
   function capture_Date(title, page){
@@ -59,16 +60,16 @@ function ReadChapter() {
         title,
         page
     }))
-    useEffect(() => {
-      function reloadPage() {
-        window.location.reload();
-      }
-  
-      if (reload) {
-        reloadPage();
-      }
-    }, [reload]);
   }
+  useEffect(() => {
+    function reloadPage() {
+      window.location.reload();
+    }
+
+    if (reload) {
+      reloadPage();
+    }
+  }, [reload]);
 
 
 
