@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect,useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import apiUrl from '../../../api'
-import { useParams } from 'react-router-dom'
 import finger1 from '../../../public/img/finger1.png'
 import finger2 from '../../../public/img/finger2.png'
 import sorprendido from '../../../public/img/sorprendido.png'
@@ -10,12 +10,13 @@ import love from '../../../public/img/love.png'
 import { useSelector,useDispatch } from 'react-redux'
 import action_manga from '../../store/actions/manga_one'
 import action_chapter from '../../store/actions/chapter_one'
-
+import { useParams } from 'react-router-dom'
 const {manga_one}=action_manga
 const {chapter_one}=action_chapter
-
- //objeto con todas las acciones 
+//objeto con todas las acciones 
 export default function Manga() {
+  const navigate = useNavigate()
+
 
   let store=useSelector(store=>console.log(store))
   const dispatch = useDispatch()
@@ -23,9 +24,9 @@ export default function Manga() {
   
   let [chapter,setChapter]= useState([{data:[],totalPages:1}])
   let [mangas, setMangas] = useState([]);
-  
+  console.log(chapter)
 
-
+console.log(chapter[0]._id)
 
    const params = useParams()
   const {id}= useParams()
@@ -48,7 +49,7 @@ export default function Manga() {
 
 useEffect(() => {
   axios.get(apiUrl+`chapters?manga_id=${id}&page=${page}&limit=4`)
-    .then(res =>  {const data=res.data.all
+    .then(res =>  {const data=res.data.all 
             setChapter(data)
             data.map(chapter =>{
               dispatch(chapter_one({
@@ -145,7 +146,7 @@ useEffect(() => {
         </div>
       </div >
       <div className=' w-[30%]  sm:w-[15%]'>
-        <button className='rounded-full bg-orange-600 h-16 w-24 sm:w-40 sm:h-28 sm:text-3xl text-white  text-lg'>Read</button>
+      {chapt._id &&   <button onClick = {()=>navigate(`/chapters/${chapt._id}/0`)} className='rounded-full bg-orange-600 h-16 w-24 sm:w-40 sm:h-28 sm:text-3xl text-white  text-lg'>Read</button>}
         </div>
       </div>
     )

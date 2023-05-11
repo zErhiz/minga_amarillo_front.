@@ -78,8 +78,11 @@ export default function Navbar() {
                 >
                   <Anchor to="/">Home</Anchor>
                 </li>
-                <li className="p-4 text-white font-semibold">
-                  <a href="#">Comics</a>
+                <li 
+                 onClick={() => setMenu(!menu)}
+                className="p-4 text-white font-semibold">
+                  
+                <Anchor to="/mangas/:page">Comics</Anchor>
                 </li>
                 <li className="p-4 text-white font-semibold">
                   My Comics

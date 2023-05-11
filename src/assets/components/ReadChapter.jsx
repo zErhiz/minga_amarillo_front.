@@ -49,7 +49,7 @@ function ReadChapter() {
       setChange(change - 1);
       navigate(`/chapters/${id}/${change}`);
     if (change <= 0) {
-      navigate(`/mangas/${chapters.manga_id}/1`);
+      navigate(`/manga/${chapters.manga_id}`);
     } 
   };
   function capture_Date(title, page){
@@ -66,7 +66,7 @@ function ReadChapter() {
   return (
     <div className="w-screen h-screen">
       <div className="w-screen h-[12%] bg-orange-500  flex justify-center items-center max-[425px]:mt-[75px] max-[425px]:h-[8%]">
-        <p className="text-white text-[25px] max-[425px]:text-[20px]">°n {store.page}  Cap -   {store.title}</p>
+        <p className="text-white text-[25px] max-[425px]:text-[20px]">°n {store.page}{change}  Cap -   {store.title} {chapters?.title}</p>
       </div>
       <div className=" w-screen h-[80%] flex items-center justify-evenly max-[425px]:h-[70%]">
         <img

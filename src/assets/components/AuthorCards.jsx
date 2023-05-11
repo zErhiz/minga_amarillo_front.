@@ -8,6 +8,7 @@ import inputs_filter_actions from "../../store/actions/inputs_filter_switch" //e
 import { useParams } from "react-router-dom";
 import { Link as Anchor } from "react-router-dom";
 function AuthorCards() {
+  const [contador,setContador] = useState()
   const [mangas, setMangas] = useState(null);
   let params = useParams()
   console.log(params)
@@ -29,12 +30,13 @@ const {id} = useParams()
   useEffect(
     () => {
       axios(apiUrl + `mangas/author/${id}` + `?new=${isNew}`)
-      .then((res) => setMangas(res.data.mangas))
+      .then((res) => {setMangas(res.data.mangas) 
+      setContador(res.data.contador)})
       .catch((err) => console.log(err));
     },
     [isNew] //el efecto se ejecuta cada vez que el isnew cambia
     );
-   
+   console.log(contador)
 function handleChangeSwitch()
 {
 
@@ -51,7 +53,7 @@ function handleChangeSwitch()
       
       {mangas ?  (
         <div className="flex flex-col  h-fit sm:min-h-[70vh] items-center ">
-         
+         {contador > 4 ? 
           <div className="flex justify-center gap-8 mt-10 border shadow-2xl lg:p-4">
             
             <Switch
@@ -60,6 +62,7 @@ function handleChangeSwitch()
             />
             
           </div>
+          :null}
           <div className=" w-[100%] flex flex-row flex-wrap gap-4   justify-center py-2  lg:w-5/6 "> 
           {mangas.map((each ) => (
           
