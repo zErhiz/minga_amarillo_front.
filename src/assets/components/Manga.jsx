@@ -101,7 +101,7 @@ useEffect(() => {
          <img className= 'h-12 sm:h-24'src={love} alt="" />
         </div>
         <div className=' bg-[#EBEBEB] drop-shadow-2xl mt-4 flex justify-evenly items-center content-center h-20  w-[90%] rounded-2xl sm:h-24 '>
-        <div   className=' flex flex-col border-r-2 border-black    '>
+        <div   className=' flex flex-col '>
             <h2 className=' font-bold sm:text-3xl '>4.5/5</h2>
             <h6 className=' sm:text-xl'>Rating</h6>
         </div>
@@ -153,7 +153,7 @@ useEffect(() => {
     )} 
    <div className='  flex justify-around'>
    {page != 1 &&<input className={`w-20 h-6 bg-[#F97316] rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='previus' onClick={PREV}></input>}
-   {chapter && chapter.length > 0 && chapter[chapter.length - 1].totalPages !== page && <input className={`w-20 h-6 bg-slate-600 rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='next' onClick={NEXT}></input>}
+   {chapter && chapter.length > 0 && chapter[chapter.length - 1].totalPages !== page && <input className={`w-20 h-6 bg-zinc-600 rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='next' onClick={NEXT}></input>}
 
 
    </div>
