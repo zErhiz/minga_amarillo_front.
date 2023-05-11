@@ -1,8 +1,11 @@
+
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../src/App";
 import Layout from "../../src/assets/layouts/Main";
 import Authorform from "../assets/pages/Authorform";
 import ChapterForm from "../assets/components/ChapterForm.jsx";
+import Manga2 from '../assets/components/MangaDetail';
+
 
 
 import SignUp from "../../src/assets/pages/SignUp";
@@ -32,9 +35,14 @@ const routes = createBrowserRouter([
           {
         path:'/mangas/:page', element:<Manga/>
       },
+       {
+        path:'/manga/:id',element: <Manga2/>
+      }
+
     ],
   },
 ]);
 export default routes;
+
 
 

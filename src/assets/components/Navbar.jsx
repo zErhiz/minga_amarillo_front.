@@ -151,6 +151,7 @@ export default function Navbar() {
                     {" "}
                     <Anchor to="/chapters-form">New Chapter</Anchor>
                   </li>
+                  
                 ) : null}
                         <li onClick={() => setMenu(!menu)} className="p-4 text-white font-semibold">
                         <Anchor to="/author/645521404883c503d5e51549"> PRUEBA autor</Anchor>  
