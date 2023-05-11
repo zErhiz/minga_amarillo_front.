@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import formManga from '../store/reducers/formManga'
+import inputs_reducer from "./reducers/inputs_filter";
 let store= configureStore({
     reducer:{
-        formManga
+        inputs:inputs_reducer
     }
 })
 export default store

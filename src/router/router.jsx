@@ -38,7 +38,7 @@ const routes = createBrowserRouter(
         path:'/cia-form', element:<CompanyForm/>
       },
       {
-        path:'/mangas', element:<Manga/>
+        path:'/mangas/:page', element:<Manga/>
       }
     ]}
   ])
