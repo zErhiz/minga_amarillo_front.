@@ -10,7 +10,6 @@ import MangaForm from '../../src/assets/components/MangaForm.jsx'
 import CompanyForm from '../assets/pages/CompanyForm';
 import Manga from '../assets/components/manga';
 
-
 const routes = createBrowserRouter(
 
   [
@@ -39,7 +38,7 @@ const routes = createBrowserRouter(
         path:'/cia-form', element:<CompanyForm/>
       },
       {
-        path:'/manga/:id/:page',element: <Manga/>
+        path:'/manga/:id',element: <Manga/>
       }
       
       

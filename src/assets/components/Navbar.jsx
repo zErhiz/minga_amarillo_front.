@@ -151,6 +151,7 @@ export default function Navbar() {
                     {" "}
                     <Anchor to="/chapters/:id">New Chapter</Anchor>
                   </li>
+                  
                 ) : null}
               </ul>
             </div>

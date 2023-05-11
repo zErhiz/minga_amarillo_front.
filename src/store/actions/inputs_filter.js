@@ -1,1 +1,0 @@
-/* import { CreateAc } from "axios"; */

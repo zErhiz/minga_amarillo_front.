@@ -1,9 +1,11 @@
-/* import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import manga_reducer from './reducers/manga_one'
 
-let Store=configureStore({
-    reducer:{
 
-    }
+const store = configureStore({
+  reducer: {
+    blobal:manga_reducer
+  }
 })
 
-export default Store */
+export default store;
