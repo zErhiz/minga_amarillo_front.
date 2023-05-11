@@ -15,7 +15,8 @@ const reducer = createReducer(
       const newState={
        ...state, 
        title2: action.payload.title2,
-       categories2: action.payload.categories2
+       categories2: action.payload.categories2,
+       
        
 
               }

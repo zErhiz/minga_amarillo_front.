@@ -7,6 +7,7 @@ const inputs_filter=createAction(
                 title2:object.title2,
                 categories2:object.categories2,
                 
+                
             }
         }
     }

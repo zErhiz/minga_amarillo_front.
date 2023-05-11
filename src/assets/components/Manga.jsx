@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
 import axios from "axios";
 import apiUrl from "../../../api";
+import Frame27 from '../../../public/img/Frame27.png'
+import Frame26 from '../../../public/img/Frame26.png'
+import Frame28 from '../../../public/img/Frame28.png'
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import inputs_filter_actions from "../../store/actions/inputs_filter";
@@ -96,6 +99,7 @@ const Manga = () => {
       inputs_filter({
         title2: title.current.value,
         categories2: categoriesChecked,
+        
       })
       );
     setReload(!reload);
@@ -119,7 +123,7 @@ const Manga = () => {
             <h1 className="text-6xl text-white p-9">Mangas</h1>
             <label htmlFor=""></label>
             <input
-              className="text-2xl w-[100%] p-1 rounded-md"
+              className="text-2xl sm:w-[100%] p-1 rounded-md"
               defaultValue={title2}
               type="search"
               name="Find Your Manga here"
@@ -129,7 +133,15 @@ const Manga = () => {
             />
           </div>
         </div>
-        <div className="flex gap-4 p-6 w-[70%] justify-center items-center">
+        <h2 className="font-semibold text-neutral-950 text-left">Explore</h2>
+        <div className="flex gap-6 p-6">
+            
+            <img src={Frame26} alt="" />
+            <img src={Frame27} alt="" />
+            <img src={Frame28} alt="" />
+          </div>
+        <div className="flex  gap-4 p-6 w-[100%] justify-center items-center">
+         
           <form ref={category_id}>
             {categories &&
               categories.map((category) => (
@@ -143,7 +155,7 @@ const Manga = () => {
                   }}
                 >
                   {category.name}
-                  <input
+                  <input className="gap-6"
                     defaultChecked={ categories2.includes(category._id)}
                     name="category_id"
                      onChange={checkbox}
@@ -156,8 +168,9 @@ const Manga = () => {
           </form>
         </div>
 
-        <div className="bg-white flex flex-wrap p-9 flex justify-center items-center sm:w-[60vw] w-[100vw]  ">
+        <div className=" border  rounded-2xl flex flex-wrap p-9 flex justify-center items-center sm:w-[60vw] w-[100vw]  ">
           {newMangas}
+          
         </div>
         <div className="flex gap-96 p-9 w-screen justify-between">
           {page != 1 && (
