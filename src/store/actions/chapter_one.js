@@ -5,11 +5,8 @@ const chapter_one=createAction(
     (objeto)=>{
         return{
      payload:{
-        title: objeto.title,
-        order: objeto.order,
-        cover_photo: objeto.cover_photo,
+       data:objeto
 }
-        
     }}
 )
 const actions ={chapter_one}

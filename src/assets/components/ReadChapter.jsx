@@ -50,8 +50,12 @@ function ReadChapter() {
       setChange(change - 1);
       navigate(`/chapters/${id}/${change}`);
     if (change <= 0) {
-      navigate(`/manga/${chapters.manga_id}`);
+
+      navigate(`/manga/${chapters.manga_id}:/page`);
+
+     
       setReload(!reload);
+
     } 
   };
   function capture_Date(title, page){
