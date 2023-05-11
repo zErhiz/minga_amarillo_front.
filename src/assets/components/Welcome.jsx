@@ -14,7 +14,7 @@ export default function Welcome() {
           <h4 className='font-poppins text-white p-2 hidden font-semibold sm:block xl:text-1xl'>#MingaLove❤</h4>
      {!token ? <Anchor to = '/auth'> <Buttons className='font-roboto hidden border sm:block bg-white rounded-md text-orange-500 font-bold xl:px-20 py-2 px-12 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200'>Sign In!</Buttons></Anchor>:null}   
           
-      {token ?    <Anchor to= '/mangas'> <Buttons className='font-roboto hidden border sm:block bg-white rounded-md text-orange-500 font-bold xl:px-20 py-2 px-12 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200'>Explore Mangas</Buttons>
+      {token ?    <Anchor to= '/mangas/:page'> <Buttons className='font-roboto hidden border sm:block bg-white rounded-md text-orange-500 font-bold xl:px-20 py-2 px-12 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200'>Explore Mangas</Buttons>
           <Buttons/></Anchor>  :null} 
           <Buttons className="font-roboto bg-white rounded-md text-orange-500 font-bold py-2 px-24 border-orange-500 hover:bg-orange-500 hover:text-white hover:border-transparent transition duration-200 sm:hidden ">Let's go!</Buttons>
         
