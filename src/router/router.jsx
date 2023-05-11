@@ -4,12 +4,14 @@ import Layout from "../../src/assets/layouts/Main";
 import Authorform from "../assets/pages/Authorform";
 import ChapterForm from "../assets/components/ChapterForm.jsx";
 
+
 import SignUp from "../../src/assets/pages/SignUp";
 import Login from "../../src/assets/pages/Login";
 import MangaForm from "../../src/assets/components/MangaForm.jsx";
 import CompanyForm from "../assets/pages/CompanyForm";
 import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
+import Manga from '../assets/components/Manga';
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -27,8 +29,12 @@ const routes = createBrowserRouter([
       { path: "/auth", element: <Login /> },
       { path: "/cia-form", element: <CompanyForm /> },
       { path: "/author/:id", element: <Author />},
+          {
+        path:'/mangas/:page', element:<Manga/>
+      },
     ],
   },
 ]);
 export default routes;
+
 
