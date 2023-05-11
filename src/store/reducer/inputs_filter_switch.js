@@ -1,12 +1,14 @@
 import { createReducer } from "@reduxjs/toolkit";
 //importo las acciones
-import inputs_actions from "../actions/inputs_filter_switch"
+import inputs_actions from "../actions/inputs_filter_switch";
 //desestructuro las acciones que nesecito configurar
-const { inputs_filter_switch} = inputs_actions
+const { inputs_filter_switch } = inputs_actions;
 //defino estado inicial
 let initial_state = {
-    switches:[]
-}
+    switches: [],
+    isNew: true,
+ 
+  };
 const reducer = createReducer(
 initial_state,  //estado inicial
 (builder)=>  builder   //funcion constructora de casos
@@ -14,10 +16,12 @@ initial_state,  //estado inicial
     inputs_filter_switch, //nombre de la accion que tiene la informacion a reducir
     (state,action)=>{     //funcion quer depende del estado y la accion y la encargada de manejar la logica de reduccion
        const new_state = {
-        ...state,
+        
         switches:action.payload.switches,
-       }
-       return new_state
+       isNew:!action.payload.isNew
+    }
+   
+    return new_state
     }
     )
 

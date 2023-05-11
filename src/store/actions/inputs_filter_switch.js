@@ -4,11 +4,12 @@
 const inputs_filter_switch = createAction(
 'inputs_filter_switch',  //nombre de la accion
 (objeto)=>{               //funcion que va a enviar datos al reductor
-                         //el objeto debe tener todas las propiedades a guardarse en el estado global
+    console.log(objeto)                  //el objeto debe tener todas las propiedades a guardarse en el estado global //este objeto da una accion
 return  {
   payload: {
     
-    switches: objeto.switches
+    switches: objeto.switches,
+    isNew: objeto.isNew
   }
 }
 
