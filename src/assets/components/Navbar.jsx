@@ -82,7 +82,7 @@ export default function Navbar() {
                   <a href="#">Comics</a>
                 </li>
                 <li className="p-4 text-white font-semibold">
-                  <a href="#">My Comics</a>
+                  My Comics
                 </li>
 
                 {role === 1 || role === 2 ? (
@@ -149,10 +149,14 @@ export default function Navbar() {
                     className="p-4 text-white font-semibold"
                   >
                     {" "}
-                    <Anchor to="/chapters/:id">New Chapter</Anchor>
+                    <Anchor to="/chapters-form">New Chapter</Anchor>
                   </li>
                 ) : null}
+                        <li onClick={() => setMenu(!menu)} className="p-4 text-white font-semibold">
+                        <Anchor to="/author/645521404883c503d5e51549"> PRUEBA autor</Anchor>  
+                </li>
               </ul>
+              
             </div>
           </div>
         ) : null}
@@ -160,3 +164,4 @@ export default function Navbar() {
     </>
   );
 }
+

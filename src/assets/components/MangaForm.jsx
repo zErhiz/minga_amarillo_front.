@@ -1,10 +1,11 @@
 import React,{useRef, useState, useEffect}from 'react'
+import { Link as Anchor, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import swal from 'sweetalert2';
 import apiUrl from "../../../api";
 import Error from './Error';
 function Formulario() {
-
+  const navigate = useNavigate();
 
 let [categories, setCategories] = useState([]);
 
@@ -21,12 +22,9 @@ const category = () => {
     </option>
   ))
 }
-
-  
-let user = localStorage.getItem("user");
-
+let token = localStorage.getItem('token')
 let role = JSON.parse(localStorage.getItem('user'))?.role
-let token = localStorage.getItem("token");
+let headers = { headers: { 'Authorization': `Bearer ${token}` } }
     let title= useRef();
     let category_id= useRef();
     let description= useRef();
@@ -56,8 +54,38 @@ let token = localStorage.getItem("token");
     console.log(data)
      
     axios.post(apiUrl + 'mangas',data,headers)
-     .then(res=> console.log(res))
-     .catch(err=> console.log(err))
+     .then(res=> { navigate("/"); console.log(res);})
+     .catch((error) => {  if(error.response.data === "Unauthorized"){
+      console.log(error.response.data === "Unauthorized");
+      swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'The user needs to be logged in',
+        showConfirmButton: false,
+        timer: 2500
+      })}
+      else {
+        if(typeof error.response.data.message === "string"){
+          console.log(typeof error.response.data.message === "string");
+          swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: error.response.data.message,
+            showConfirmButton: false,
+            timer: 2500
+          })
+        } else {
+          error.response.data.message.forEach(err =>  swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: err,
+            showConfirmButton: false,
+            timer: 2500
+          })  )
+        }
+      }
+
+ } )
     
   }
 
