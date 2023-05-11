@@ -14,7 +14,7 @@ export default function Main() {
     
         <Outlet/>
     
-
+        
 
 
     <Footer/>
