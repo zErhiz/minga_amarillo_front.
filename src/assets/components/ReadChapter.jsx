@@ -83,21 +83,21 @@ function ReadChapter() {
           onClick={handleBefore}
           src={flechaizq}
           alt=""
-          className="w-8 h-8 flex justify-start  cursor-pointer"
+          className="w-8 h-8 flex justify-start  cursor-pointer drop-shadow-2xl"
         />
           <button onClick={handleBefore}className="w-[50%] h-[100%]  cursor-pointer z-10 " src={flechader} ></button>
         <img
           src={chapters?.pages[change]}
           alt="page"
-          className="bg-gray-50 w-[80%] h-[100%] bg-contain -z-0"
+          className="bg-gray-50 w-[80%] h-[100%] bg-contain -z-0 drop-shadow-2xl"
         />
         
-        <button onClick={handleNext} className="w-[50%] h-[100%] cursor-pointer z-10 "  ></button>
+        <button onClick={handleNext} className="w-[50%] h-[100%] cursor-pointer z-10  "  ></button>
         <img
           onClick={handleNext}
           src={flechader}
           alt=""
-          className=" w-8 h-8  cursor-pointer "
+          className=" w-8 h-8   cursor-pointer drop-shadow-2xl"
         />
       </div>
       <div className="bg-slate-200 w-screen h-[8%] flex justify-center items-center gap-2">
