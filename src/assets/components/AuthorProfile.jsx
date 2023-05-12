@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import authors_storage_global from "../../store/actions/authors_storage";
 function AuthorProfile() {
+  let token = localStorage.getItem('token')
+  let headers = { headers: { 'Authorization': `Bearer ${token}` } }
   const [authors, setAuthors] = useState(null);
   const dispatch = useDispatch();
   const { authors_storage } = authors_storage_global;
@@ -16,7 +18,7 @@ function AuthorProfile() {
   const { id } = useParams();
   console.log(id);
   useEffect(() => {
-    axios(apiUrl + `authors/${id}`)
+    axios(apiUrl + `authors/${id}`,headers)
       .then((res) => {
         const data = res.data.response;
         setAuthors(data);

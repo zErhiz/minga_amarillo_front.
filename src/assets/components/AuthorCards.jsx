@@ -8,7 +8,8 @@ import inputs_filter_actions from "../../store/actions/inputs_filter_switch"; //
 import { useParams } from "react-router-dom";
 import { Link as Anchor } from "react-router-dom";
 function AuthorCards() {
- 
+  let token = localStorage.getItem('token')
+  let headers = { headers: { 'Authorization': `Bearer ${token}` } }
   const [contador, setContador] = useState();
   const [mangas, setMangas] = useState(null);
   let params = useParams();
@@ -29,7 +30,7 @@ function AuthorCards() {
 
   useEffect(
     () => {
-      axios(apiUrl + `mangas/author/${id}` + `?new=${isNew}`)
+      axios(apiUrl + `mangas/author/${id}` + `?new=${isNew}`,headers)
         .then((res) => {
           setMangas(res.data.mangas);
           setContador(res.data.contador);
@@ -64,7 +65,7 @@ function AuthorCards() {
                 className="flex flex-col  w-[45%] h-[40vh]  pb-2 sm:w-[30%] 2xl:w-[20%] 2xl:h-[50vh]  shadow-2xl 2xl:bg-white"
               >
                 <Anchor
-                  to={`/manga/${each?._id}`}
+                  to={`/manga/${each?._id}/:page`}
                   className={`h-[82%] ${
                     each?._id
                       ? "hover:scale-110 transform transition-transform duration-300"

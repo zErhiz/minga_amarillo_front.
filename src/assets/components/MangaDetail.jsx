@@ -22,7 +22,7 @@ export default function Manga() {
   let store=useSelector(store=>console.log(store))
   const dispatch = useDispatch()
   //con useselector seleccione los estados que necesito
-  
+  let [cantPages,setCanpages]=useState(0)
   let [count,setCount]=useState(0) 
   let [chapter,setChapter]= useState([{data:[],totalPages:1}])
   let [mangas, setMangas] = useState([]);
@@ -55,6 +55,7 @@ useEffect(() => {
         setChapter(data)
         dispatch(chapter_one(data))
        setCount(res.data.count) 
+       setCanpages(res.data.cantPages)
 
 
     })
@@ -87,7 +88,7 @@ useEffect(() => {
 {showMangaContent ? (
     <div className='  mt-24  min-h-screen w-screen  flex flex-col justify-center items-center sm:mt-24'>
     
-    <img className='  rounded-2xl h-[16rem] w-[90%] sm:bg-cover  sm:w-[50vw] sm:h-[30rem]'  src={mangas.cover_photo}  />  
+    <img className='  rounded-2xl h-[16rem] w-[90%] sm:bg-cover  sm:w-[40vw] sm:h-[25rem]'  src={mangas.cover_photo}  />  
  
         <h2 className='w-[90%] text-4xl text-center mt-5 sm:text-7xl text-[#222222] '>{mangas.title}</h2>
         <p></p>
@@ -126,8 +127,8 @@ useEffect(() => {
 </div>):(
 
       <div className='mt-20  min-h-screen w-screen  flex flex-col justify-center items-center sm:mt-24'>
-    <img className='rounded-2xl   h-[16rem] w-[90%] sm:bg-cover  sm:w-[50vw] sm:h-[30rem]'src={mangas.cover_photo}/>
-  <h2 className='w-[90%] text-4xl text-center mt-5 sm:text-7xl text-[#222222] '>Chapters</h2>
+    <img className=' rounded-2xl h-[16rem] w-[90%] sm:bg-cover  sm:w-[40vw] sm:h-[25rem]'src={mangas.cover_photo}/>
+  <h2 className='w-[90%] text-2xl text-center mt-5 sm:text-5xl text-[#222222]'>Chapters</h2>
   <div className='mt-8 h-7 w-[90%] sm:w-[80%] flex justify-around  rounded-lg sm:h-20 ' >
   <button className={` w-[50%] rounded-lg sm:text-xl sm:rounded-3xl text-[#9D9D9D] ${showMangaContent &""}`} onClick={() => setShowMangaContent(true)}>Mangas</button>
   <button className={` w-[50%] rounded-lg sm:text-xl sm:rounded-3xl text-white ${!showMangaContent && "bg-[#F97316]"}`} onClick={() => setShowMangaContent(false)}>Chapters</button>
@@ -156,7 +157,7 @@ useEffect(() => {
 
    {count >= 5 &&<div className='mb-10  flex justify-around'>
    {page != 1 &&<input className={`w-20 h-6 bg-[#F97316] rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='previus' onClick={PREV}></input>}
-   {chapter && chapter.length > 0 && chapter[chapter.length - 1].totalPages !== page && <input className={`w-20 h-6 bg-zinc-600 rounded-2xl text-white sm:w-40 sm:h-11`} type="button" value='next' onClick={NEXT}></input>}
+   {page != cantPages && <input className={`w-20 h-6 bg-zinc-600 rounded-2xl mt-5 text-white sm:w-40 sm:h-11`} type="button" value='next' onClick={NEXT}></input>}
    </div>}
   </div>
 </div>

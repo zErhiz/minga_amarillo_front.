@@ -51,7 +51,7 @@ function ReadChapter() {
       navigate(`/chapters/${id}/${change}`);
     if (change <= 0) {
 
-      navigate(`/manga/${chapters.manga_id}:/page`);
+      navigate(`/manga/${chapters.manga_id}/:page`);
 
      
       setReload(!reload);
