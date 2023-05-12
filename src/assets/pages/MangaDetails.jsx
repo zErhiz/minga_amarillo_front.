@@ -1,5 +1,5 @@
 import React from 'react'
-import Manga from '../components/manga'
+import Manga from '../components/MangaDetail'
 export default function MangaDetails() {
   return (
     <>
