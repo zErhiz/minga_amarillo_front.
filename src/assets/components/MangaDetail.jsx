@@ -19,13 +19,13 @@ const { chapter_one } = action_chapter
 export default function Manga() {
   const navigate = useNavigate()
 
-let store=useSelector(store =>console.log(store))
+/* let store=useSelector(store =>console.log(store)) */
 
 
-  /* let storeManga = useSelector(store=>store.manga)
+   let storeManga = useSelector(store=>store.manga)
   let storeChapter=useSelector(store=>store.chapter)
   console.log(storeManga);
-  console.log(storeChapter); */
+  console.log(storeChapter); 
 
 
 
@@ -73,6 +73,7 @@ let store=useSelector(store =>console.log(store))
     if (pageChange > 1) {
       setPage(prevPage => prevPage - 1)
       setReload(!reload);
+      navigate(`/manga/${id}/${pageChange-1}`)
 
     }
   }
