@@ -15,6 +15,7 @@ import CompanyForm from "../assets/pages/CompanyForm";
 import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
+import EdithChapter from "../assets/pages/EdithChapter";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +25,8 @@ const routes = createBrowserRouter([
       { path: "/", element: <Main /> },
       { path: "/author-form", element: <Authorform /> },
       { path: "/chapters/:id", element: <ChapterForm /> },
-       {path: "/chapters/:id/:page", element: <ReadChapter/>  },
+      {path: "/chapters/:id/:page", element: <ReadChapter/>  },
+      {path: "/edit/:id_manga", element: <EdithChapter/>  },
       { path: "/", element: <Main /> },
       { path: "/register", element: <SignUp /> },
       { path: "/login", element: <Login /> },
