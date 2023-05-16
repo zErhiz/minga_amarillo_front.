@@ -2,10 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiUrl from "../../../api";
 
-
-
-
-
 const categories_read = createAsyncThunk('categories_read', async () => {
     try {
         

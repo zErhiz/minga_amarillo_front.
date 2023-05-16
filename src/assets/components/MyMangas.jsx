@@ -1,41 +1,32 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
-import apiUrl from "../../../api";
-import action_manga from '../../store/actions/manga_one'
+
 import { useSelector,useDispatch } from "react-redux";
 import { Link as Anchor } from "react-router-dom";
 import categories_actions from '../../store/actions/categories'
+import mangas_actions from '../../store/actions/manga'
+import store from "../../store/store";
 
 let {categories_read}=categories_actions
-let {manga_one}=action_manga
+let {manga_read}=mangas_actions
 export default function MyMangas() {
   const dispatch = useDispatch()
 
     let categories =useSelector(store=>store.categories.categories)
      console.log(categories); 
-
-/* 
-    let storeManga = useSelector(store=>store.manga_one)
-    console.log(storeManga); */
+     let mangas =useSelector(store=>store.mangas.mangas)
+     console.log(mangas);
 
     let title = useRef();
     let description = useRef();
     let cover_photo = useRef()
     let category_id = useRef();
-    
+   
     useEffect(() => {
+        dispatch(manga_read())
         dispatch(categories_read())
     }, []);
     
-    console.log();
 
-    const category = () => {
-      return categories?.map(categoria => (
-        <option key={categoria._id} value={categoria._id}>
-          {categoria.name}
-        </option>
-      ))
-    }
 
 
     /* let [categories, setCategories] = useState([]);
@@ -63,17 +54,17 @@ export default function MyMangas() {
             <h2 className=" text-2xl text-white font-bold ">0</h2>
             <h2 className=" text-2xl text-white font-bold ">AuthorName</h2>
           </div>
-          <div className="rounded-[2rem] bg-white h-52 border border-black z-20 w-full relative bottom-10">
-          <div className="flex  gap-4 p-6 w-[100%] justify-center items-center">
-         
+          <div className=" flex flex-col justify-around   rounded-t-[3rem] bg-white min-h-[50vh] border border-black z-20 w-full relative bottom-10">
+          <div className="flex  gap-4 p-6 w-[100%] justify-center items-center border border-black">
          <form ref={category_id}>
            {categories &&
              categories.map((category) => (
+                console.log(category.color),
                <label
                  htmlFor={category._id}
                  key={category._id}
                  style={{
-                 
+                 textcolor: category?.color,
                    backgroundColor: category.hover,
                    padding: "0.3rem",
                    borderRadius: "20px",
@@ -91,6 +82,30 @@ export default function MyMangas() {
                </label>
              ))}
          </form>
+       </div>
+       <div className="flex justify-center content-center items-center">
+        <div className="border border-black w-64 h-32 flex rounded-2xl ">
+            <div className="w-[60%] h-32 border border-yellow-400">
+            <div className="border border-red-600 h-[20%]">
+                <button>+</button>
+                <button>-</button>
+            </div>
+            <div className="border border-green-600 h-[80%] flex flex-col justify-around content-center items-center">
+            <div className="">
+                <h2>titulo</h2>
+                <h4>company o autor</h4>
+            </div>
+            <div className="border borde-black flex justify-evenly w-full">
+                <button>edit</button>
+                <button>delete</button>
+
+            </div>
+            </div>
+            </div>
+            <img className="h-full w-[40%] rounded-2xl rounded-l-[4rem] " src="https://i.postimg.cc/V6HWZ9k2/main-planet-hulk.jpg" alt="" />
+
+        </div>
+
        </div>
 
           </div>
