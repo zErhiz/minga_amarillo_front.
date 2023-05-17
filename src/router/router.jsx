@@ -16,6 +16,7 @@ import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
 import MyMangas from "../assets/components/MyMangas";
+import EditManga from "../assets/components/EditManga";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -41,7 +42,11 @@ const routes = createBrowserRouter([
       },
       {
         path:'/mymangas',element: <MyMangas/>
+      },
+      {
+      path:'/e',element:<EditManga/>
       }
+
 
     ],
   },

@@ -3,11 +3,13 @@ import axios from "axios";
 import apiUrl from "../../../api";
 
 const manga_read=createAsyncThunk('manga_read',async()=>{
+    
 try {
     let token = localStorage.getItem('token')
     let headers = { headers: { 'Authorization': `Bearer ${token}` } }
-let res=await axios(apiUrl+'mangas/me',headers)
-return {mangas:res.data.response}
+    let res=await axios(apiUrl+'mangas/me',headers)
+   
+    return {mangas:res.data.response}
 
 } catch (error) {
     return {
@@ -17,6 +19,22 @@ return {mangas:res.data.response}
 }
 
 })
+  const manga_delete=createAsyncThunk('manga_delete',async({id})=>{
+    try {
+        let token = localStorage.getItem('token')
+        let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+        let res=await axios.delete(apiUrl+'mangas/'+ id,headers)
+        return {
+            delete:id
+        }
 
-const actions={manga_read}
+
+    } catch (error) {
+        return {
+            mangas:[]
+        }
+    }
+})  
+
+const actions={manga_read,manga_delete}
 export default actions
