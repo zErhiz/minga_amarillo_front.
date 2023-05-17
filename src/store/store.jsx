@@ -7,14 +7,17 @@ import inputs_reducer_chapter from "./reducers/save_page._title"
 import inputs_reducer_mangas from "./reducers/inputs_filter";
 import manga_reducer from './reducers/manga_one.js'
 import chapter_reducer from './reducers/chapter_one.js'
+import chapter_edit from './reducers/edith_chapter.js'
+
 const store = configureStore({
         reducer:{
-       inputs: input_reducer,
-       almacenamiento: storage_reducer,
-        inputsChapter: inputs_reducer_chapter,
+          inputs: input_reducer,
+          almacenamiento: storage_reducer,
+          inputsChapter: inputs_reducer_chapter,
           inputsMangas:inputs_reducer_mangas,
           chapter:chapter_reducer,
-    manga:manga_reducer,
+          manga:manga_reducer,
+          chapters: chapter_edit
         }
     })
     export default store 
