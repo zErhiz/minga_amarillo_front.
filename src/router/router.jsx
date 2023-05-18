@@ -15,6 +15,7 @@ import CompanyForm from "../assets/pages/CompanyForm";
 import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
+import Admin from "../assets/pages/Admin";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,9 @@ const routes = createBrowserRouter([
       },
       {
         path:'/new-role',element: <NewRole/>
+      },
+      {
+        path:'/admin',element: <Admin/>
       }
 
     ],
