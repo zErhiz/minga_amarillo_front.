@@ -36,5 +36,21 @@ try {
     }
 })  
 
-const actions={manga_read,manga_delete}
+const manga_update=createAsyncThunk('manga_update',async({id,data})=>{
+    try {
+        let token = localStorage.getItem('token')
+        let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+        let res=await axios.put(apiUrl+'mangas/'+ id,data,headers)
+        return {
+            data:res.data.manga
+        }
+
+
+    } catch (error) {
+        return {
+            mangas:[]
+        }
+    }
+}) 
+const actions={manga_read,manga_delete,manga_update}
 export default actions
