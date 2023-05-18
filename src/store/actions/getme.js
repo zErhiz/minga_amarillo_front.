@@ -62,13 +62,16 @@ const delete_chapter = createAsyncThunk('delete_chapter', async({id, manga_id})=
     }
 })
 
-const upd_chapter = createAsyncThunk('upd_chapter', async({id, data}) => {
+const upd_chapter = createAsyncThunk('upd_chapter', async(data) => {
   try {
     let token = localStorage.getItem('token')
     let headers = { headers: { 'Authorization': `Bearer ${token}` } } 
-    let res = await axios.put(apiUrl + 'chapters/' + id , headers ) 
+    // let body = {manga_id:data.manga_id,}
+    let res = await axios.put(apiUrl + 'chapters/' + data.id ,data ,headers  )
+    console.log(res);
+     
     return {
-        data: response.data.chapter  
+        data: res.data.update
     }
   } catch (error) {
     return{

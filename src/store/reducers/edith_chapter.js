@@ -51,17 +51,12 @@ const reducer = createReducer(
     ).addCase(
         upd_chapter.fulfilled,
         (state,action) => {
-            let editChapter = []
-            for(let chapter of state.chapters){
-                if(chapter._id === action.payload.data._id){
-                    editChapter.push(action.payload.data)
-                } else {
-                    editChapter.push(chapter)
-                }
-            }
+            
+               
+            
              let newState ={
                 ...state,
-                chapters: editChapter,
+                
                 chapter: action.payload.data
             }
             return newState

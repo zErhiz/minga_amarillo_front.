@@ -16,14 +16,19 @@ export default function EditChapterComponent() {
   const {manga_id} = params
   
   let readChapter = useSelector(store => store.chapters.chapters)
-  console.log(readChapter);
+  let newChapter = useSelector(store => store.chapters.chapter)
+  // console.log(newChapter);
+  
+  // console.log(readChapter);
   const [orderToEdit, setOrderToEdit] = useState()
   const [data, setData] = useState(null)
+  const[newData, setNewData]=useState(null)
   const [chapterData, setChapterData] =useState(null)
   const [selectedChapter, setSelectedChapter] = useState()
   
   
-  
+  let infoChapter = readChapter?.length > 0 ? Object.keys(readChapter[0] ): []
+  // console.log(infoChapter);
   
   
   
@@ -35,7 +40,7 @@ export default function EditChapterComponent() {
     dispatch(getData({manga_id}))     
     
   },
-  []
+  [newChapter]
   )
 //   useEffect(() => {
 //     if (readChapter?.length > 0) {
@@ -48,13 +53,33 @@ export default function EditChapterComponent() {
 function handleSelect(e)  { 
   
   setOrderToEdit(Number(e.target.value)-1 )
-  setSelectedChapter(e.target[Number(e.target.value)-1].id)
+  
+    setSelectedChapter(e.target[Number(e.target.value)-1].id)
+  
   // console.log(e);
 }
 
 function handleChange(e) {
   setData(e.target.value)
+  console.log(e.target.value);
 }  
+// console.log();
+function handleInput (e) {
+  setNewData(e.target.value)
+  console.log(e.target.value);
+}
+
+function handleSend (){
+  console.log(selectedChapter);
+  
+  dispatch(upd_chapter({
+    manga_id,
+    [data]: newData,
+    id: selectedChapter
+
+  }))
+ 
+}
 
   
   useEffect(()=> {
@@ -70,12 +95,13 @@ let showAlert = (title, httCB ) => {
     title: 'Do you want to delete the chapter?',
     showDenyButton: true,
     showCancelButton: true,
-    confirmButtonText: 'Delate',
+    confirmButtonText: 'Delete',
     denyButtonText: `Don't Delete`,
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
       httCB()
+
       Swal.fire('Delete!!', '', 'success')
     } else if (result.isDenied) {
       Swal.fire('Changes are not saved', '', 'info')
@@ -83,7 +109,26 @@ let showAlert = (title, httCB ) => {
   })
 
 }
+let showAlertInput = (title, httCB ) => {
 
+  Swal.fire({
+    title: 'Do you want to modify the chapter?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Modify Data',
+    denyButtonText: `Don't Modify`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      httCB()
+      
+      Swal.fire('Modify', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('Changes are not saved', '', 'info')
+    }
+  })
+
+}
  
 
 // console.log(data);  
@@ -92,12 +137,12 @@ let showAlert = (title, httCB ) => {
     <>
       <div className="w-screen h-screen flex">
       <div className="w-[50vw] h-[100vh]  flex flex-col justify-center items-center max-md:w-[100vw]">
-          <p className="text-black text-3xl"> Edith Chapter </p>
+          <p className="text-black text-3xl"> Edit Chapter </p>
           <form action="" className="h-[70vh] flex flex-col justify-center items-center gap-4 max-md:gap-6">
             <p type="text" className="border-b border-black px-4 w-[20vw] h-[6vh] max-md:w-[50vw]"> {readChapter[orderToEdit]?.manga_id.title}</p>
             <select className='border-b border-black px-4 w-[20vw] h-[6vh] max-md:w-[50vw]' name="" id="" placeholder=''  onChange={handleSelect }  >
 
-{/* {data === null && <option value="">Seleccione uno</option>} */}
+             {data === null && <option value="">Selection one</option>}
               {
                 readChapter?.map(read => {
                   
@@ -106,21 +151,26 @@ let showAlert = (title, httCB ) => {
               }
             </select>
             <select className='border-b border-black px-4 w-[20vw] h-[6vh] max-md:w-[50vw]'  onChange={handleChange } >
-              <option> Cover_photo  </option>
-              <option> Pages  </option>
-              <option> Title  </option>
+            {data === null && <option value="">Selection one</option>}
+              {infoChapter?.map((chapter,i) => {
+                if(chapter !== "manga_id" && chapter !== "_id"){
+                  return (
+                    <option key={i} value={chapter}>{chapter} </option>
+                  )
+                }
+              } )}
              
             </select>
           
-            <input type="text" className="border-b border-black px-4  w-[20vw] h-[6vh] max-md:w-[50vw]" placeholder="data to edit" />
-            <input className="text-white   rounded-full bg-green-500 w-[15vw] h-[8vh] max-md:w-[45vw]" type="submit"  value="Edith"/>
+            <input type="text" className="border-b border-black px-4  w-[20vw] h-[6vh] max-md:w-[50vw]" placeholder="data to edit" defaultValue={newData} onChange={handleInput} />
+            <input className="text-white   rounded-full bg-green-500 w-[15vw] h-[8vh] max-md:w-[45vw]" type="button"  value="Edith"  onClick={()=>showAlertInput('Want to dele chapter', () => handleSend() )}/>
             <input className="text-red-500  rounded-full bg-red-200 w-[15vw] h-[8vh] max-md:w-[45vw]" type="button"  value="Delete" onClick={()=>showAlert('Want to dele chapter', () => dispatch(delete_chapter({id:selectedChapter,manga_id})))}/>
             
           </form>
         </div>
         <div className="w-[50vw] h-[100vh] flex flex-col justify-center items-center gap-2 max-md:hidden">
           <p className="text-black">{readChapter[orderToEdit]?.title} </p>
-          <img src={readChapter[orderToEdit]?.cover_photo} alt="" className="bg-cover h-[70vh]" />
+          <img src={readChapter[orderToEdit]?.cover_photo} alt="" className="w-[40vw] h-[70vh] object-contain" />
         </div>
         
       </div>
