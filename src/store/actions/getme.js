@@ -43,11 +43,15 @@ const getInfo = createAsyncThunk(
     }
 )
 
-const delete_chapter = createAsyncThunk('delete_chapter', async({id})=> {
+const delete_chapter = createAsyncThunk('delete_chapter', async({id, manga_id})=> {
     try {
         let token = localStorage.getItem('token')
-        let headers = { headers: { 'Authorization': `Bearer ${token}` } } 
-        let res = await axios.delete(apiUrl + 'chapter/:id' + id + headers )      
+        let configs = { headers: { 'Authorization': `Bearer ${token}` },
+                        data: {manga_id}
+    }
+
+        console.log('hola');    
+        let res = await axios.delete(apiUrl + 'chapters/' + id,   configs )  
         return {
             delete : id
         }
@@ -58,7 +62,22 @@ const delete_chapter = createAsyncThunk('delete_chapter', async({id})=> {
     }
 })
 
-const actions = {getData, getInfo, delete_chapter}
+const upd_chapter = createAsyncThunk('upd_chapter', async({id, data}) => {
+  try {
+    let token = localStorage.getItem('token')
+    let headers = { headers: { 'Authorization': `Bearer ${token}` } } 
+    let res = await axios.put(apiUrl + 'chapters/' + id , headers ) 
+    return {
+        data: response.data.chapter  
+    }
+  } catch (error) {
+    return{
+        update: []
+    }
+  }
+})
+
+const actions = {getData, getInfo, delete_chapter, upd_chapter}
 
 export default actions
 

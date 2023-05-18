@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import actions from "../actions/getme";
-const {getData, getInfo, delete_chapter} = actions
+const {getData, getInfo, delete_chapter,upd_chapter} = actions
 
 let initialState = {
     chapters: [],
@@ -48,6 +48,41 @@ const reducer = createReducer(
             return newState
         }
         
+    ).addCase(
+        upd_chapter.fulfilled,
+        (state,action) => {
+            let editChapter = []
+            for(let chapter of state.chapters){
+                if(chapter._id === action.payload.data._id){
+                    editChapter.push(action.payload.data)
+                } else {
+                    editChapter.push(chapter)
+                }
+            }
+             let newState ={
+                ...state,
+                chapters: editChapter,
+                chapter: action.payload.data
+            }
+            return newState
+        }
     )
 )
 export default reducer
+
+// addCase (
+//     upd_chapter.fulfilled,
+//     (state, action) => {
+//         let newState = {
+//             ...state,
+//             chapters:  state.chapters.map(each => {
+//                 if(each._id === action.payload.data._id){
+//                     return action.payload.data
+//                 } else {
+//                     return each
+//                 }
+//             } )
+//         }
+//         return newState
+//     } 
+// )
