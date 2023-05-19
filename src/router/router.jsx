@@ -6,7 +6,7 @@ import Authorform from "../assets/pages/Authorform";
 import ChapterForm from "../assets/components/ChapterForm.jsx";
 import Manga2 from '../assets/components/MangaDetail';
 
-
+import NewRole from "../assets/pages/NewRole";
 
 import SignUp from "../../src/assets/pages/SignUp";
 import Login from "../../src/assets/pages/Login";
@@ -41,9 +41,16 @@ const routes = createBrowserRouter([
         path:'/manga/:id/:page',element: <Manga2/>
       },
       {
+
         path:'/mymangas',element: <MyMangas/>
       },
      
+
+
+
+        path:'/new-role',element: <NewRole/>
+      }
+
 
 
     ],
