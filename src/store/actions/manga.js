@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiUrl from "../../../api";
+import Swal from 'sweetalert2'
+
 
 const manga_read=createAsyncThunk('manga_read',async()=>{
     
@@ -47,9 +49,13 @@ const manga_update=createAsyncThunk('manga_update',async({id,data})=>{
 
 
     } catch (error) {
-        return {
-            mangas:[]
-        }
+    
+        Swal.fire({
+        icon:'error',
+        title: error.response.data.message
+        
+        })
+     
     }
 }) 
 const actions={manga_read,manga_delete,manga_update}

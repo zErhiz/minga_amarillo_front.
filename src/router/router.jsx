@@ -43,9 +43,7 @@ const routes = createBrowserRouter([
       {
         path:'/mymangas',element: <MyMangas/>
       },
-      {
-      path:'/e',element:<EditManga/>
-      }
+     
 
 
     ],
