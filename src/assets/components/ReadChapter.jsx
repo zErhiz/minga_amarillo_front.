@@ -99,7 +99,7 @@ function ReadChapter() {
           className="bg-gray-50 w-[80%] h-[100%] bg-contain -z-0 drop-shadow-2xl"
         />
         
-        <button onClick={handleNext} className="w-[50%] h-[100%] cursor-pointer z-10  "  ></button>
+        <button onClick={handleNext [()=>setListComment(!listComment)]} className="w-[50%] h-[100%] cursor-pointer z-10  "  ></button>
         <img
           onClick={handleNext}
           src={flechader}

@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import apiUrl from "../../../api";
 import axios from 'axios'
-const read_comments  = createAsyncThunk('read_comments', async()=>{
+
+const read_comments  = createAsyncThunk('read_comments', async({id})=>{ //accion para editar los comentarios
     let token = localStorage.getItem("token");
     let headers = { headers: { Authorization: `Bearer ${token}` } };
     try {
        
-       let res= await axios(apiUrl + "comments", headers)
+       let res= await axios(apiUrl + `comments?chapter_id=${id}`, headers)
       
        return{
         comments: res.data.response
@@ -18,7 +19,7 @@ const read_comments  = createAsyncThunk('read_comments', async()=>{
         }
     }
 })
-const delete_comment= createAsyncThunk('delete_comment', async({id})=>{
+const delete_comment= createAsyncThunk('delete_comment', async({id})=>{ //accion para borrar comentarios
     try {
         let token = localStorage.getItem("token");
         let headers = { headers: { Authorization: `Bearer ${token}` } }; 
@@ -33,7 +34,7 @@ const delete_comment= createAsyncThunk('delete_comment', async({id})=>{
         }
     }
 })
-const upd_comment= createAsyncThunk('upd_category', async({id, comment})=>{
+const upd_comment= createAsyncThunk('upd_category', async({id, comment})=>{  //accion para actualizar los comentarios
     try {
         let token = localStorage.getItem("token");
         let headers = { headers: { Authorization: `Bearer ${token}` } }; 

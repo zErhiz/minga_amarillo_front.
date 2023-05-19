@@ -15,15 +15,20 @@ const {read_comments, delete_comment, upd_comment}= comments_actions
 
 export default function Comment() {
 let[editComment, setEditComment]=useState('')
+
   const {id}= useParams()
+
     let comments = useSelector(store=>store?.comment?.comments)
+
     console.log(comments)
     let dispatch = useDispatch()
+
   let token = localStorage.getItem("token");
+
   const [page, setPage] = useState(1);
+
   let email = JSON.parse(localStorage.getItem("user"))?.email;
 
-  let userPhoto = JSON.parse(localStorage.getItem("user"))?.photo;
 
  let headers = { headers: { Authorization: `Bearer ${token}` } };
  let [reload, setReload]= useState(false)
@@ -32,10 +37,10 @@ console.log(token)
 
   useEffect(
     () => {
-     dispatch(read_comments())
+     dispatch(read_comments({id}))
        console.log('hola')
     },
-    [reload] //array de dependencias vacio ya que necesitamos fetchear una unica vez al montarse el componente (ydespues los datos no van a cambiar)
+    [reload, id] //array de dependencias vacio ya que necesitamos fetchear una unica vez al montarse el componente (ydespues los datos no van a cambiar)
   );
  
 
@@ -44,8 +49,10 @@ console.log(token)
 
 function inputEdit(e){
 setEditComment(e.target.value)
+setReload(!reload)
 
 }
+
   function handleForm(e){
     e.preventDefault()
     let data ={
@@ -74,17 +81,17 @@ axios.post(apiUrl+ "comments",data, headers )
   function next() {
     setPage(page + 1);
     setReload(!reload);
-    //usar useNavigate
+   
   }
 
   function prev() {
     if (comments) setPage(page - 1);
     setReload(!reload); //para que refresque los componentes o la página cuando realizo un accion 
-     //usar useNavigate
+     
   }
   return (
    
-  <div className='gap-6 flex flex-col justify-between border relative h-[150vh] w-[100vw] bg-slate-100  sm:w-[30vw]'>
+  <div className='gap-6 flex flex-col  border relative h-[150vh] w-[100vw] bg-slate-100  sm:w-[30vw]'>
     
    
   {comments.map(comm=>(
@@ -121,7 +128,10 @@ axios.post(apiUrl+ "comments",data, headers )
 
 
 
-      {email == comm.user_id?.email? ( <button onClick={()=>dispatch(delete_comment({id:comm._id}))} className="inline-block w-[10%] sm:w-[10%] rounded-lg border bg-red-100 px-5 py-3 text-center text-sm font-semibold text-red-500 "> 
+      {email == comm.user_id?.email? ( <button onClick={()=>dispatch(delete_comment({id:comm._id}))}
+      
+      
+      className="inline-block w-[10%] sm:w-[10%] rounded-lg border bg-red-100 px-5 py-3 text-center text-sm font-semibold text-red-500 "> 
        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4  h-4">
       <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
     </svg>
@@ -133,7 +143,7 @@ axios.post(apiUrl+ "comments",data, headers )
     </div>
      <p className="font-medium  sm:text-lg">{comm.user_id?.email}</p>
      
-     {email == comm.user_id?.email? ( <input type="text" onChange={inputEdit} defaultValue={comm.comment} />):null}
+     {email === comm.user_id?.email? ( <input type="text" onChange={inputEdit} defaultValue={comm.comment} />):null}
    {!email === comm.user_id?.email && <p className=" text-gray-500">{comm.comment}</p>}
 
   <div className='flex justify-between'>
