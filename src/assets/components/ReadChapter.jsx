@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import save_pages_action from "../../store/actions/save_page_title"
+import {Link as Anchor} from 'react-router-dom'
+import ListComment from "./ListComment";
 
 const {save_pages} = save_pages_action 
 
@@ -17,6 +19,7 @@ function ReadChapter() {
     const dispatch = useDispatch()
 
     const { id, page  } = useParams();
+    const [listComment, setListComment]= useState(false)
   const [chapters, setChapters] = useState(null);
   const [change, setChange] = useState(Number(page));
   const navigate = useNavigate();
@@ -82,14 +85,14 @@ function ReadChapter() {
       <div className="w-screen h-[12%] bg-orange-500  flex justify-center items-center max-[425px]:mt-[75px] max-[425px]:h-[8%]">
         <p className="text-white text-[25px] max-[425px]:text-[20px]">°n {store.page}{change}  Cap -   {store.title} {chapters?.title}</p>
       </div>
-      <div className=" w-screen h-[80%] flex items-center justify-evenly max-[425px]:h-[70%]">
+      <div className=" w-[99vw] h-[80%] flex items-center justify-evenly max-[425px]:h-[70%]">
         <img
           onClick={handleBefore}
           src={flechaizq}
           alt=""
           className="w-8 h-8 flex justify-start  cursor-pointer drop-shadow-2xl"
         />
-          <button onClick={handleBefore}className="w-[50%] h-[100%]  cursor-pointer z-10 " src={flechader} ></button>
+          <button onClick={handleBefore}className="w-[50%] h-[100%]  cursor-pointer z-10 " src={flechader} ></button> 
         <img
           src={chapters?.pages[change]}
           alt="page"
@@ -104,8 +107,9 @@ function ReadChapter() {
           className=" w-8 h-8   cursor-pointer drop-shadow-2xl"
         />
       </div>
-      <div className="bg-slate-200 w-screen h-[8%] flex justify-center items-center gap-2">
-        <img src={messege} alt="" className="w-6" />
+      <div className="bg-slate-200 w-screen h-[10%]  flex justify-center items-center gap-2">
+         <img src={messege} alt="" className="w-6" onClick={()=>setListComment(!listComment)}/>
+       {listComment ?(<ListComment/>) :null}
         <p className="flex justify-center items-center text-sm text-black">
            42
         </p>

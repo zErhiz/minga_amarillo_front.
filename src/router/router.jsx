@@ -15,6 +15,7 @@ import CompanyForm from "../assets/pages/CompanyForm";
 import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
+import ListComment from "../assets/components/ListComment";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,9 @@ const routes = createBrowserRouter([
       },
        {
         path:'/manga/:id/:page',element: <Manga2/>
+      },
+      {
+        path:'/listcomment', element: <ListComment/>
       }
 
     ],
