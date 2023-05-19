@@ -83,7 +83,7 @@ const Manga = () => {
       <Cards
         title={m.title}
         img={m.cover_photo}
-        props={() => navigate(`/manga/${m._id}/:page`)}
+        props={() => navigate(`/manga/${m._id}/1`)}
       />
     );
   });
@@ -142,23 +142,25 @@ const Manga = () => {
           </div>
         <div className="flex  gap-4 p-6 w-[100%] justify-center items-center">
          
-          <form ref={category_id}>
+        <form ref={category_id}>
             {categories &&
               categories.map((category) => (
+                console.log(category.color),
                 <label
                   htmlFor={category._id}
                   key={category._id}
                   style={{
+                    color: category.color,
                     backgroundColor: category.hover,
-                    padding: "0.3rem",
+                    padding: "1rem",
                     borderRadius: "20px",
                   }}
                 >
                   {category.name}
                   <input className="gap-6"
-                    defaultChecked={ categories2.includes(category._id)}
+                    defaultChecked={categories.includes(category._id)}
                     name="category_id"
-                     onChange={checkbox}
+                    /*  onChange={checkbox} */
                     type="checkbox"
                     value={category._id}
                     id={category._id}

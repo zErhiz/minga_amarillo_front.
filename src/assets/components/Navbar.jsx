@@ -147,15 +147,25 @@ export default function Navbar() {
                   </li>
                   
                 ) : null}
+
                         {role === 3 ? 
                         <li
+
                     onClick={() => setMenu(!menu)}
                     className="p-4 text-white font-semibold"
                   >
                     {" "}
+
                     <Anchor to="/admin">Admin Panel</Anchor>
                   </li>
                   :null}
+
+                    <Anchor to="/mymangas">My Mangas</Anchor>
+                  </li>
+                  
+              {/*  ) : null */} 
+                        
+
               </ul>
               
             </div>
