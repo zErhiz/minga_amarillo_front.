@@ -156,6 +156,7 @@ export default function Navbar() {
                   >
                     {" "}
 
+
                     <Anchor to="/admin">Admin Panel</Anchor>
                   </li>
                   :null}

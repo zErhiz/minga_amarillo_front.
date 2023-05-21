@@ -17,6 +17,7 @@ import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
 
 
+
 import Admin from "../assets/pages/Admin";
 
 
@@ -50,6 +51,7 @@ const routes = createBrowserRouter([
       },
       {
 
+
         path:'/listcomment', element: <ListComment/>
 
 
@@ -65,6 +67,7 @@ const routes = createBrowserRouter([
       },
       {
         path:'/admin',element: <Admin/>
+
 
 
 

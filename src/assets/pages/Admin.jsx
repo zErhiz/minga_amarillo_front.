@@ -6,7 +6,9 @@ export default function Admin() {
   let role = JSON.parse(localStorage.getItem('user'))?.role
   return (
     <>
-    {role === 3 ? 
+
+    {role === 3 ?
+
     <div className=' bg-[#EBEBEB] h-[100vh] w-full'> 
     <AdminBg/>
     <AdminPanel/>
