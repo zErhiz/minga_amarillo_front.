@@ -26,8 +26,11 @@ module.exports = {
       'bgnewrole': "url('../public/img/newroleImage.png')",
       'bgform':"url('../public/img/BGFORM.png')",
       'bgform2':"url('../public/img/BGFORM2.PNG')",
+      'bgpanel':"url('../public/img/Panel.png')",
       'bgmanga':"url('../public/img/bgmanga.png')",
+
       'bgfavourites':"url('../public/img/favourites.png')",
+
 
       'bgauthors': "url('../public/img/authors.png')"
 

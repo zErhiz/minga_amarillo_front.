@@ -87,9 +87,7 @@ function AuthorFormComponent() {
         setHasError(false);
         navigate("/");
         console.log(res);
-        let user = JSON.parse(localStorage.getItem("user"));
-user.role = 1;
-localStorage.setItem("user", JSON.stringify(user)); 
+        
       })
       .catch((error) => {
         console.log(error.response);
