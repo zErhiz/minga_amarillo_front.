@@ -29,7 +29,7 @@ function AuthorProfile() {
         );
       })
       .catch((err) => console.log(err));
-  }, [dispatch]);
+  }, []);
   console.log(authors);
   return (
     <>

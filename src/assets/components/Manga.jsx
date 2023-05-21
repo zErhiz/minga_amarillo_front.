@@ -57,6 +57,7 @@ const Manga = () => {
     [reload] //array de dependencias vacio ya que necesitamos fetchear una unica vez al montarse el componente (ydespues los datos no van a cambiar)
     );
     const checkbox = (event) => {
+    
       const array = categories.map((category) => ({
         id: category._id,
         name: category.name,
@@ -83,7 +84,7 @@ const Manga = () => {
       <Cards
         title={m.title}
         img={m.cover_photo}
-        props={() => navigate(`/manga/${m._id}/:page`)}
+        props={() => navigate(`/manga/${m._id}/1`)}
       />
     );
   });
@@ -108,16 +109,18 @@ const Manga = () => {
   function next() {
     setPage(page + 1);
     setReload(!reload);
+    //usar useNavigate
   }
 
   function prev() {
     if (mangas) setPage(page - 1);
-    setReload(!reload);
+    setReload(!reload); //para que refresque los componentes o la página cuando realizo un accion 
+     //usar useNavigate
   }
 
   return (
     <>
-      <div className="min-h-screen flex flex-col justify-center items-center bg-slate-200 ">
+      <div className="min-h-screen flex flex-col justify-center items-center bg-slate-200  sm:bg-white">
         <div className="bg-bgmanga bg-no-repeat bg-cover bg-[39%] sm:bg-cover   h-[100vh]  w-[100%] sm:h-[60vh]">
           <div className="flex flex-col justify-center items-center p-52">
             <h1 className="text-6xl text-white p-9">Mangas</h1>
@@ -133,56 +136,67 @@ const Manga = () => {
             />
           </div>
         </div>
-        <h2 className="font-semibold text-neutral-950 text-left">Explore</h2>
-        <div className="flex gap-6 p-6">
+      
+      
+        <div className=" mt-[-5rem] gap-4 p-6 w-[100%] sm:w-[90%] rounded-3xl sm:rounded-2xl border bg-slater-200 sm:bg-white justify-center items-center">
+        <h2 className="font-semibold sm:hidden text-neutral-950 text-left">Explore</h2>
+        <div className=" gap-6 flex block sm:hidden p-6">
             
             <img src={Frame26} alt="" />
             <img src={Frame27} alt="" />
             <img src={Frame28} alt="" />
           </div>
+
         <div className="flex  gap-4 p-6 w-[100%] justify-center items-center">
          
-          <form ref={category_id}>
+        <form ref={category_id}>
             {categories &&
               categories.map((category) => (
+                console.log(category.color),
                 <label
+
                   htmlFor={category._id}
                   key={category._id}
                   style={{
+                    color: category.color,
                     backgroundColor: category.hover,
-                    padding: "0.3rem",
+                    padding: "1rem",
                     borderRadius: "20px",
                   }}
                 >
                   {category.name}
                   <input className="gap-6"
-                    defaultChecked={ categories2.includes(category._id)}
+                    defaultChecked={categories.includes(category._id)}
                     name="category_id"
-                     onChange={checkbox}
+                    /*  onChange={checkbox} */
                     type="checkbox"
                     value={category._id}
                     id={category._id}
                   />
                 </label>
+                
               ))}
-          </form>
-        </div>
-
-        <div className=" border  rounded-2xl flex flex-wrap p-9 flex justify-center items-center sm:w-[60vw] w-[100vw]  ">
+            
+               <div className="rounded-2xl flex flex-wrap p-9 flex justify-center items-center sm:w-[99vw] w-[99vw]">
+            
           {newMangas}
           
         </div>
-        <div className="flex gap-96 p-9 w-screen justify-between">
+          </form>
+        </div>
+
+     
+        <div className="flex sm:gap-96 p-9 w-[85%] justify-center">
           {page != 1 && (
             <button
-              className="border border-black p-4 w-[20%] rounded-md"
+              className="border  text-white font-semibold bg-orange-500 p-4 sm:w-[10%] rounded-md"
               onClick={prev}
             >
               PREV
             </button>
           )}
           <button
-            className="border border-black p-4 w-[20%] rounded-md rounded-md"
+            className="border  p-4 sm:w-[10%] bg-orange-500 text-white font-semibold rounded-md rounded-md"
             onClick={next}
           >
             NEXT
