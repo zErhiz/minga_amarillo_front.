@@ -15,6 +15,7 @@ export default function Navbar() {
 
   let role = JSON.parse(localStorage.getItem("user"))?.role;
   let token = localStorage.getItem("token");
+  // console.log(token);
   let email = JSON.parse(localStorage.getItem("user"))?.email;
   let userPhoto = JSON.parse(localStorage.getItem("user"))?.photo;
   let headers = { headers: { Authorization: `Bearer ${token}` } };

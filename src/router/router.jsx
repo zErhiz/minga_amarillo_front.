@@ -16,6 +16,9 @@ import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
 
+import EdithChapter from "../assets/pages/EdithChapter";
+
+
 
 
 import Admin from "../assets/pages/Admin";
@@ -26,6 +29,7 @@ import ListComment from "../assets/components/ListComment";
 import MyMangas from "../assets/components/MyMangas";
 import EditManga from "../assets/components/EditManga";
 
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -34,8 +38,9 @@ const routes = createBrowserRouter([
       { path: "/mangas-form", element: <MangaForm /> },
       { path: "/", element: <Main /> },
       { path: "/author-form", element: <Authorform /> },
-      { path: "/chapters/:id", element: <ChapterForm /> },
-       {path: "/chapters/:id/:page", element: <ReadChapter/>  },
+      { path: "/chapters-form", element: <ChapterForm /> },
+      {path: "/chapters/:id/:page", element: <ReadChapter/>  },
+      {path: "/edit/:manga_id", element: <EdithChapter/>  },
       { path: "/", element: <Main /> },
       { path: "/register", element: <SignUp /> },
       { path: "/login", element: <Login /> },

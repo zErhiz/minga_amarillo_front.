@@ -7,6 +7,9 @@ import inputs_reducer_mangas from "./reducers/inputs_filter";
 import manga_reducer from './reducers/manga_one.js'
 import chapter_reducer from './reducers/chapter_one.js'
 
+import chapter_edit from './reducers/edith_chapter.js'
+
+
 
 
 import active_inactive_reducer from "./reducer/active_inactive_reducer"
@@ -25,6 +28,7 @@ const store = configureStore({
   
         reducer:{
 
+
         inputs: input_reducer,
         almacenamiento: storage_reducer,
         inputsChapter: inputs_reducer_chapter,
@@ -34,7 +38,7 @@ const store = configureStore({
         activeOrInactive:active_inactive_reducer,
         activeOrInactiveCompanies:active_inactive_companie_reducer,
         stateButton: state_admin_button,
-
+ chapters: chapter_edit,
 
 categories:category_reducer,
 
