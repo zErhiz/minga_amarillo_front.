@@ -65,7 +65,7 @@ const MyMangasCard = ({ manga, categories }) => {
     return (
     
         <>
-        {role==1||role==2?(<div key={manga._id} className='   w-72 sm:w-80 h-32 flex rounded-2xl mt-7   shadow-2xl  sm:m-7 items-center  bg-slate-50 ' >
+        {role==1||role==2?(
 
 
 

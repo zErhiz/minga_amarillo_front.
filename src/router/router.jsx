@@ -48,35 +48,12 @@ const routes = createBrowserRouter([
       { path: "/auth", element: <Login /> },
       { path: "/cia-form", element: <CompanyForm /> },
       { path: "/author/:id", element: <Author />},
-          {
-        path:'/mangas/:page', element:<Manga/>
-      },
-       {
-        path:'/manga/:id/:page',element: <Manga2/>
-      },
-      {
-
-
-        path:'/listcomment', element: <ListComment/>
-
-
-        path:'/mymangas',element: <MyMangas/>
-      },
-     
-
-
-
-        path:'/new-role',element: <NewRole/>
-
-
-      },
-      {
-        path:'/admin',element: <Admin/>
-
-
-
-
-      }
+       { path:'/mangas/:page', element:<Manga/> },
+       { path:'/manga/:id/:page',element: <Manga2/>},
+      { path:'/listcomment', element: <ListComment/>},
+      {path:'/mymangas',element: <MyMangas/>},
+      {path:'/new-role',element: <NewRole/> },
+      { path:'/admin',element: <Admin/>}
 
 
 

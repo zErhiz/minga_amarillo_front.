@@ -28,7 +28,6 @@ export const Login = (props) => {
     .then(res=> {
       Swal.fire({
         title: 'Signed in!',
-        text: JSON.stringify(res.data.user),
         icon: 'success',
         confirmButtonText: 'Ok'
       });

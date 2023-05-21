@@ -162,11 +162,7 @@ export default function Navbar() {
                   </li>
                   :null}
 
-                    <Anchor to="/mymangas">My Mangas</Anchor>
-                  </li>
                   
-
-                ) : null}
                {role === 1 || role === 2 ? ( 
                   <li
                     onClick={() => setMenu(!menu)}
