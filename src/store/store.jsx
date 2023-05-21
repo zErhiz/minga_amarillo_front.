@@ -7,9 +7,13 @@ import inputs_reducer_mangas from "./reducers/inputs_filter";
 import manga_reducer from './reducers/manga_one.js'
 import chapter_reducer from './reducers/chapter_one.js'
 
+
 import active_inactive_reducer from "./reducer/active_inactive_reducer"
 import state_admin_button from "./reducer/state_admin_reducer"
 import active_inactive_companie_reducer from "./reducer/active_inactive_company_reducer"
+
+import comment_reducer from './reducers/comments.js'
+
 
 import category_reducer from './reducers/categories'
 
@@ -18,6 +22,7 @@ import reducer_mangas from './reducers/manga'
 const store = configureStore({
   
         reducer:{
+
 
         inputs: input_reducer,
         almacenamiento: storage_reducer,
@@ -28,10 +33,25 @@ const store = configureStore({
         activeOrInactive:active_inactive_reducer,
         activeOrInactiveCompanies:active_inactive_companie_reducer,
         stateButton: state_admin_button,
-          categories:category_reducer,
-          
+
+          inputs: input_reducer,
+          almacenamiento: storage_reducer,
+          inputsChapter: inputs_reducer_chapter,
+          inputsMangas:inputs_reducer_mangas,
+          chapter:chapter_reducer,
+categories:category_reducer,
+    manga:manga_reducer,
+    comment:comment_reducer
           mangas:reducer_mangas,
         }
+
+          manga:manga_reducer,
+
+
+
+        },
+       
+
 
     })
     export default store 

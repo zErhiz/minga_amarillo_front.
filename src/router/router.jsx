@@ -16,7 +16,11 @@ import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
 
+
 import Admin from "../assets/pages/Admin";
+
+
+import ListComment from "../assets/components/ListComment";
 
 import MyMangas from "../assets/components/MyMangas";
 import EditManga from "../assets/components/EditManga";
@@ -46,18 +50,26 @@ const routes = createBrowserRouter([
       },
       {
 
+        path:'/listcomment', element: <ListComment/>
+
+
         path:'/mymangas',element: <MyMangas/>
       },
      
 
 
+
         path:'/new-role',element: <NewRole/>
+
 
       },
       {
         path:'/admin',element: <Admin/>
 
+
+
       }
+
 
 
     ],
