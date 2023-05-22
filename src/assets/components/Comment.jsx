@@ -38,9 +38,9 @@ console.log(token)
   useEffect(
     () => {
      dispatch(read_comments({id}))
-       console.log('hola')
+      
     },
-    [reload, id] //array de dependencias vacio ya que necesitamos fetchear una unica vez al montarse el componente (ydespues los datos no van a cambiar)
+    [ id] //array de dependencias vacio ya que necesitamos fetchear una unica vez al montarse el componente (ydespues los datos no van a cambiar)
   );
  
 
@@ -49,7 +49,54 @@ console.log(token)
 
 function inputEdit(e){
 setEditComment(e.target.value)
-setReload(!reload)
+
+}
+  
+
+
+function editComm(edit){
+  Swal.fire({
+    title: 'Are you sure to edit your comment?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, edit it!'
+}).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(upd_comment({id:edit, comment:editComment}))
+        Swal.fire(
+            'Edited!',
+            'Your comment has been edited .',
+            'success'
+        )
+    }
+})
+}
+
+
+function deleteComment(del){
+  
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(delete_comment({id:del}))
+        Swal.fire(
+            'Deleted!',
+            'Your comment has been deleted.',
+            'success'
+        )
+    }
+})
+
 
 }
 
@@ -62,12 +109,13 @@ setReload(!reload)
     }
 axios.post(apiUrl+ "comments",data, headers )
 .then(res=> {
+  dispatch(read_comments({id}))
   Swal.fire({
     title: 'Comment posted',
     icon: 'success',
     confirmButtonText: 'Ok'
   });
-  setReload(!reload)
+  
 })
 .catch(err=>{console.log(err)
   Swal.fire({
@@ -78,7 +126,7 @@ axios.post(apiUrl+ "comments",data, headers )
   });
 })
   }
-  function next() {
+/*  function next() {
     setPage(page + 1);
     setReload(!reload);
    
@@ -88,7 +136,7 @@ axios.post(apiUrl+ "comments",data, headers )
     if (comments) setPage(page - 1);
     setReload(!reload); //para que refresque los componentes o la página cuando realizo un accion 
      
-  }
+  }*/
   return (
    
   <div className='gap-6 flex flex-col  border relative h-[150vh] w-[100vw] bg-slate-100  sm:w-[30vw]'>
@@ -103,19 +151,18 @@ axios.post(apiUrl+ "comments",data, headers )
   >
     <div className="flex items-center  gap-4 " >
 
-{email ==comm.user_id?.email ? (<button  className='flex border text-blue-500 p-2 rounded-md' onClick={()=>dispatch(upd_comment({id:comm._id, comment:editComment}))
-  }>
+{email ==comm.user_id?.email ? (<button  className='flex border text-blue-500 p-2 rounded-md' onClick={()=>editComm(comm._id) }>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       className="  text-blue-500 h-6 w-6"
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
       />
     </svg>
@@ -128,7 +175,7 @@ axios.post(apiUrl+ "comments",data, headers )
 
 
 
-      {email == comm.user_id?.email? ( <button onClick={()=>dispatch(delete_comment({id:comm._id}))}
+      {email == comm.user_id?.email? ( <button onClick={()=>deleteComment(comm._id)}
       
       
       className="inline-block w-[10%] sm:w-[10%] rounded-lg border bg-red-100 px-5 py-3 text-center text-sm font-semibold text-red-500 "> 
@@ -144,7 +191,7 @@ axios.post(apiUrl+ "comments",data, headers )
      <p className="font-medium  sm:text-lg">{comm.user_id?.email}</p>
      
      {email === comm.user_id?.email? ( <input type="text" onChange={inputEdit} defaultValue={comm.comment} />):null}
-   {!email === comm.user_id?.email && <p className=" text-gray-500">{comm.comment}</p>}
+    {email != comm.user_id.email &&<p className=" text-gray-500">{comm.comment}</p>}
 
   <div className='flex justify-between'>
        <p>10</p>
@@ -153,13 +200,13 @@ axios.post(apiUrl+ "comments",data, headers )
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       className="  text-blue-500 h-6 w-6"
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
       />
     </svg>
@@ -185,26 +232,11 @@ axios.post(apiUrl+ "comments",data, headers )
    <label htmlFor=""></label>
 <div className='border flex  justify-between'>
 
-   <input className=' bg-slate-100 px-4 h-[6vh] py-2 rounded-md' type="text" placeholder='Say something here...'  ref={commentNew}/>
+   <input className=' bg-slate-100 px-4 h-[6vh] py-2 rounded-md w-[85%]' type="textarea" placeholder='Say something here...'  ref={commentNew}/>
    <input className='   py-4  text-center rounded-md font-semibold  w-[15%] h-[4vh] cursor-pointer' type="submit" value='->' />
 </div>
     </form>
-<div className="flex sm:gap-96 p-9 w-[85%] justify-center">
-          {page != 1 && (
-            <button
-              className="border  text-white font-semibold bg-orange-500 p-4 sm:w-[10%] rounded-md"
-              onClick={prev}
-            >
-              PREV
-            </button>
-          )}
-          <button
-            className="border  p-4 sm:w-[10%] bg-orange-500 text-white font-semibold rounded-md rounded-md"
-            onClick={next}
-          >
-            NEXT
-          </button>
-        </div>
+/
   </div>
   )
 }

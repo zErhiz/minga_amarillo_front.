@@ -16,7 +16,7 @@ const store = configureStore({
           inputsMangas:inputs_reducer_mangas,
           chapter:chapter_reducer,
     manga:manga_reducer,
-    comment:comment_reducer
+    comment:comment_reducer 
         }
     })
     export default store 
