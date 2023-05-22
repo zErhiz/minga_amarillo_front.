@@ -58,6 +58,9 @@ const MyMangasCard = ({ manga, categories }) => {
      let detailsUrl=()=>{
         navigate(`/manga/${manga._id}/1`)
      }
+     let chaptersUrl=()=>{
+        navigate(`/edit/${manga._id}`)
+     }
 
      let role = JSON.parse(localStorage.getItem('user'))?.role
 
@@ -80,7 +83,7 @@ const MyMangasCard = ({ manga, categories }) => {
                 <img onClick={chapterUrl}  className="h-3  sm:h-4  object-cover" src={further} alt="" /> 
 
 
-                <Anchor to=' /edit/:id_manga	' ><img     className="h-3 sm:h-4      ml-2  object-cover" src={pencil} alt="" /> </Anchor>
+                 <img onClick={chaptersUrl}    className="h-3 sm:h-4      ml-2  object-cover" src={pencil} alt="" /> 
                    
                 </div>
                 <div className=" h-[80%] flex flex-col justify-around content-center items-center">
