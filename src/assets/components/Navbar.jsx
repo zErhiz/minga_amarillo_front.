@@ -15,6 +15,7 @@ export default function Navbar() {
 
   let role = JSON.parse(localStorage.getItem("user"))?.role;
   let token = localStorage.getItem("token");
+  // console.log(token);
   let email = JSON.parse(localStorage.getItem("user"))?.email;
   let userPhoto = JSON.parse(localStorage.getItem("user"))?.photo;
   let headers = { headers: { Authorization: `Bearer ${token}` } };
@@ -42,7 +43,7 @@ export default function Navbar() {
 </svg>
 
             <div className="sm:flex  sm:items-center sm:mt-9 sm:gap-4  sm:flex-row">
-              <h2 className="hidden sm:block text-orange-500 text-2xl xl:text-4xl">
+              <h2 className="hidden sm:block text-orange-500 text-2xl xl:text-4xl font-semibold">
                 Minga
               </h2>
               <img className="sm:h-6 xl:h-8" src={ultima} alt="" />
@@ -127,22 +128,14 @@ export default function Navbar() {
                     <Anchor to="/login">Sign in</Anchor>
                   </li>
                 ) : null}
-                {role === 0 ? (
-                  <li
-                    onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
-                  >
-                    {" "}
-                    <Anchor to="/author-form"> New Author </Anchor>
-                  </li>
-                ) : null}
+             
                  {role === 0 ? (
                   <li
                     onClick={() => setMenu(!menu)}
                     className="p-4 text-white font-semibold"
                   >
                     {" "}
-                    <Anchor to="/cia-form"> New Company </Anchor>
+                    <Anchor to="/new-role"> Change Your Role </Anchor>
                   </li>
                 ) : null}
                 {role === 1 || role === 2 ? (
@@ -155,7 +148,34 @@ export default function Navbar() {
                   </li>
                   
                 ) : null}
+
+                        {role === 3 ? 
+                        <li
+
+                    onClick={() => setMenu(!menu)}
+                    className="p-4 text-white font-semibold"
+                  >
+                    {" "}
+
+
+                    <Anchor to="/admin">Admin Panel</Anchor>
+                  </li>
+                  :null}
+
+                  
+               {role === 1 || role === 2 ? ( 
+                  <li
+                    onClick={() => setMenu(!menu)}
+                    className="p-4 text-white font-semibold"
+                  >
+                    {" "}
+                    <Anchor to="/mymangas">My Mangas</Anchor>
+                  </li>
+                  
+               ) : null } 
+
                         
+
               </ul>
               
             </div>

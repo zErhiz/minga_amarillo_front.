@@ -37,7 +37,9 @@ builder=>
             let newState={
                 ...state,
                 commments:state.comments.map(each=>{
+
                     if(each===action.payload.data ){
+
                         return action.payload.data
                     }else{
                         return each

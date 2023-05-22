@@ -34,11 +34,14 @@ const delete_comment= createAsyncThunk('delete_comment', async({id})=>{ //accion
         }
     }
 })
+
 const upd_comment= createAsyncThunk('upd_comment', async({id, comment})=>{  //accion para actualizar los comentarios
     try {
         let token = localStorage.getItem("token");
         let headers = { headers: { Authorization: `Bearer ${token}` } }; 
         let response = await axios.put(apiUrl+'comments/'+id, comment, headers)
+
+
         console.log(response)
         return {
          data:response.data.response
