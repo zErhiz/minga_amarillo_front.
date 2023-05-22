@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
       { path: "/mangas-form", element: <MangaForm /> },
       { path: "/", element: <Main /> },
       { path: "/author-form", element: <Authorform /> },
-      { path: "/chapters-form", element: <ChapterForm /> },
+      { path: "/chapters-form/:id", element: <ChapterForm /> },
       {path: "/chapters/:id/:page", element: <ReadChapter/>  },
       {path: "/edit/:manga_id", element: <EdithChapter/>  },
       { path: "/", element: <Main /> },
