@@ -9,6 +9,8 @@ import SignUp from "./SignUp.jsx"
 import { Navigate, useNavigate } from "react-router-dom"
 import Error from "../components/Error"
 import { redirect } from "react-router-dom"
+import { gapi } from "gapi-script"
+import {GoogleLogin} from "react-google-login"
 export const Login = (props) => {
 
   const [showRegister, setShowRegister]= useState(false)
@@ -17,9 +19,21 @@ export const Login = (props) => {
  const navigate = useNavigate()
   let email  = useRef()
   let password=useRef()
-  console.log(email)
+  // console.log(email)
+
+  const clientID = "166461268192-b8ojdp58ns00djbekuc8o7p2p7lm5krb.apps.googleusercontent.com"
+
+  useEffect(()=> {
+    const start = () => {
+      gapi.auth2.init( {
+        clienteId : clientID
+      })
+    }
+    gapi.load("client:auth2",start)
+  }, [])
+
   function handleForm(e){
-    e.preventDefault()
+    // e.preventDefault()
     let data={
       email:email.current.value, 
       password:password.current.value
@@ -48,6 +62,37 @@ export const Login = (props) => {
     
    
   }
+
+  const onSuccess = (response) => {
+    const {name, email,imageUrl, googleId}=response.profileObj
+    // console.log(response.profileObj);
+    let data={
+      email:email, 
+      password: googleId
+    }
+    axios.post(apiUrl +'auth/signin', data)
+    .then(res=> {
+      Swal.fire({
+        title: 'Signed in!',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user',JSON.stringify( res.data.user))
+      
+        navigate ('/')
+        
+    })
+     .catch(err=>{console.log(err)
+      Swal.fire({
+        title: 'Check the fields',
+        text: err.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+    })
+  }
+
   let token =localStorage.getItem('token')
   return (
     <>
@@ -83,8 +128,19 @@ export const Login = (props) => {
     <input className='border border-black px-4 py-2 rounded-md' type="password" placeholder='password' ref={password}/>
    
     <input className='bg-orange-400 border border-black py-4 text-white text-center rounded-md font-semibold hover:bg-white hover:text-orange-600 cursor-pointer' type="submit" value='Sign In' />
-    </form>
-   </div>
+    
+    <GoogleLogin
+    clientId= {clientID}
+    buttonText="Sign in with Google"
+    onSuccess={onSuccess}
+    onFailure={''}
+    cookiePolicy={'single_host_origin'}
+  />
+   
+    </form> 
+    
+
+    </div>
  
     </div>
    

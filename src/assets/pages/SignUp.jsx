@@ -6,7 +6,11 @@ import Swal from 'sweetalert2'
  import axios from 'axios'
  import apiUrl from "../../../api";
  import { Navigate, useNavigate } from "react-router-dom"
+ import { useEffect } from 'react'
+ import { gapi } from "gapi-script"
+import {GoogleLogin} from "react-google-login"
  import Error from '../components/Error'
+
 export const SignUp = () => {
   const navigate = useNavigate()
   
@@ -46,6 +50,54 @@ export const SignUp = () => {
     })
     
   }
+  const clientID = "166461268192-b8ojdp58ns00djbekuc8o7p2p7lm5krb.apps.googleusercontent.com"
+
+  useEffect(()=> {
+    const start = () => {
+      gapi.auth2.init( {
+        clienteId : clientID
+      })
+    }
+    gapi.load("client:auth2",start)
+  }, [])
+  const onSuccess = (response) => {
+    // console.log(response);
+    const {name, email,imageUrl, googleId}=response.profileObj
+
+    let data ={
+      email: email,
+      
+      password: googleId,
+      photo: imageUrl,
+
+    
+    }
+    axios.post(apiUrl + 'auth/signup', data)
+    .then(res=> {
+      Swal.fire({
+        title: 'User registered',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+   
+      
+        navigate ('/')
+        
+    })
+  
+     .catch(err=>{console.log(err)
+      Swal.fire({
+        title: 'Check the fields',
+        text: err.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+    })
+
+
+  }
+
+
   let token =localStorage.getItem('token')
   return (
   <>
@@ -79,6 +131,12 @@ export const SignUp = () => {
         <label htmlFor="">Photo</label>
         <input  className='border border-black px-4 py-2 rounded-md' type="text" placeholder='url' ref={photo}/>
         <input className='bg-orange-400 border border-black py-4 text-white text-center rounded-md font-semibold hover:bg-white hover:text-orange-600 cursor-pointer' type="submit" value='Sign Up' />
+        <GoogleLogin
+            clientId = {clientID}
+            buttonText="Sign in with Google"
+            onSuccess={onSuccess}
+            onFailure={''}
+            cookiePolicy={'single_host_origin'}  />
         </form>
       
        </div>
