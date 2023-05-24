@@ -92,6 +92,9 @@ export const Login = (props) => {
       });
     })
   }
+  const onFailure = () => {
+    console.log("Something is wrong");
+  };
 
   let token =localStorage.getItem('token')
   return (
@@ -133,7 +136,7 @@ export const Login = (props) => {
     clientId= {clientID}
     buttonText="Sign in with Google"
     onSuccess={onSuccess}
-    onFailure={''}
+    onFailure={onFailure}
     cookiePolicy={'single_host_origin'}
   />
    

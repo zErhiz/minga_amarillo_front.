@@ -41,12 +41,23 @@ export const SignUp = () => {
     })
   
      .catch(err=>{console.log(err)
-      Swal.fire({
-        title: 'Check the fields',
-        text: err.response.data.message,
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
+      
+      if(err.response && err.response.status === 400){
+        Swal.fire({
+          title: 'error',
+          text: 'User already exist',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }else {
+
+        Swal.fire({
+          title: 'Check the fields',
+          text: err.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
     })
     
   }
@@ -60,13 +71,13 @@ export const SignUp = () => {
     }
     gapi.load("client:auth2",start)
   }, [])
+  
   const onSuccess = (response) => {
     // console.log(response);
     const {name, email,imageUrl, googleId}=response.profileObj
 
     let data ={
       email: email,
-      
       password: googleId,
       photo: imageUrl,
 
@@ -75,27 +86,49 @@ export const SignUp = () => {
     axios.post(apiUrl + 'auth/signup', data)
     .then(res=> {
       Swal.fire({
-        title: 'User registered',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      });
+        title: 'Check your email to verify your account',
+        showDenyButton: true,
+        confirmButtonText: 'Register!',
+        
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            Swal.fire('Check your email to verify your account', '', 'success')
+            navigate ('/')
+        } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+        }
+    })
    
       
-        navigate ('/')
+        
         
     })
   
      .catch(err=>{console.log(err)
-      Swal.fire({
-        title: 'Check the fields',
-        text: err.response.data.message,
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
+      console.log(err.response);
+      if(err.response && err.response.status === 400){
+        Swal.fire({
+          title: 'error',
+          text: 'User already exist',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })}else {
+
+          Swal.fire({
+            title: 'Check the fields',
+            text: err.response.data.message,
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
     })
 
 
   }
+  const onFailure = () => {
+    console.log("Something is wrong");
+  };
 
 
   let token =localStorage.getItem('token')
@@ -135,7 +168,7 @@ export const SignUp = () => {
             clientId = {clientID}
             buttonText="Sign in with Google"
             onSuccess={onSuccess}
-            onFailure={''}
+            onFailure={onFailure}
             cookiePolicy={'single_host_origin'}  />
         </form>
       
