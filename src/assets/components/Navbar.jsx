@@ -18,6 +18,7 @@ export default function Navbar() {
   // console.log(token);
   let email = JSON.parse(localStorage.getItem("user"))?.email;
   let userPhoto = JSON.parse(localStorage.getItem("user"))?.photo;
+  console.log(userPhoto);
   let headers = { headers: { Authorization: `Bearer ${token}` } };
   const navigate = useNavigate();
   function backHome() {

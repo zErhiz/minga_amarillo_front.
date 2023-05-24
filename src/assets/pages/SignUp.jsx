@@ -7,7 +7,10 @@ import Swal from 'sweetalert2'
  import apiUrl from "../../../api";
  import { Navigate, useNavigate } from "react-router-dom"
  import Error from '../components/Error'
-export const SignUp = () => {
+ /* import {uploadFile} from '../firebase/config' */
+ export const SignUp = () => {
+  /*  let file = photo.current.files[0]
+   const result=uploadFile(file)  */
   const navigate = useNavigate()
   
   const password = useRef()
@@ -15,15 +18,19 @@ export const SignUp = () => {
   const photo = useRef()
   function handleForm (e){
     e.preventDefault()
-    let data ={
+    let formData = new FormData();
+    formData.append('email', email.current.value);
+    formData.append('password', password.current.value);
+    formData.append('photo', photo.current.files[0]);
+   /*  let data ={
       email: email.current.value,
       
       password: password.current.value,
       photo: photo.current.value,
 
     
-    }
-    axios.post(apiUrl + 'auth/signup', data)
+    } */
+    axios.post(apiUrl + 'auth/signup', formData,headers)
     .then(res=> {
       Swal.fire({
         title: 'User registered',
@@ -46,7 +53,8 @@ export const SignUp = () => {
     })
     
   }
-  let token =localStorage.getItem('token')
+  let token = localStorage.getItem('token')
+  let headers = { headers: { 'Authorization': `Bearer ${token}` } }
   return (
   <>
   {!token ? 
@@ -71,13 +79,13 @@ export const SignUp = () => {
           </div>
         
        <div className=' flex h-[80%] justify-center '>
-       <form  onSubmit={(e)=>handleForm(e)} className='w-[80%] h-full bg-white text-orange-500 flex flex-col px gap-2'>
+       <form  onSubmit={(e)=>handleForm(e)} className='w-[80%] h-full bg-white text-orange-500 flex flex-col px gap-2' action='/signup' encType="multipart/form-data" method="post">
         <label htmlFor="">Email</label>
         <input className='border border-black px-4 py-2 rounded-md' type="text" placeholder='email' ref={email} />
         <label htmlFor="">Password</label>
         <input className='border border-black px-4 py-2 rounded-md' type="text" placeholder='password' ref={password}/>
         <label htmlFor="">Photo</label>
-        <input  className='border border-black px-4 py-2 rounded-md' type="text" placeholder='url' ref={photo}/>
+        <input name='photo'  className='border border-black px-4 py-2 rounded-md' type="file" placeholder='url' ref={photo}/>
         <input className='bg-orange-400 border border-black py-4 text-white text-center rounded-md font-semibold hover:bg-white hover:text-orange-600 cursor-pointer' type="submit" value='Sign Up' />
         </form>
       
