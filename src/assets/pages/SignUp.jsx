@@ -30,7 +30,7 @@ import Swal from 'sweetalert2'
 
     
     } */
-    axios.post(apiUrl + 'auth/signup', formData,headers)
+    axios.post(apiUrl + 'auth/signup', formData)
     .then(res=> {
       Swal.fire({
         title: 'User registered',
@@ -54,7 +54,7 @@ import Swal from 'sweetalert2'
     
   }
   let token = localStorage.getItem('token')
-  let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+  
   return (
   <>
   {!token ? 

@@ -29,6 +29,7 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
     let title= useRef();
     let category_id= useRef();
     let description= useRef();
+    let cover_photo=  useRef();
 
 
   const handleSubmit = (e) => {
@@ -38,6 +39,8 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
         title: title.current.value,
         category_id: category_id.current.value,
         description: description.current.value,
+        cover_photo:cover_photo.current.value
+        
       }
       if (title.current.value === '' || category_id.current.value === '' || description.current.value === '') {
         swal.fire({
@@ -96,11 +99,14 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
      { role ===1 || role === 2 ?(  
     <div  className=' mt-20  sm:mt-36 w-screnn h-screen  flex flex-col justify-center items-center'>
           <h2 className='h- text-3xl text-orange-500  sm:text-6xl'> New Manga</h2>
-    <form  className='w-[80%] mt-5 sm:mt-10  h-screen  flex flex-col justify-center items-center content-center' action="" onSubmit={handleSubmit} >
+    <form  className='w-[80%] mt-5 sm:mt-10  h-screen  flex flex-col justify-center items-center content-center'action='/mangas' encType="multipart/form-data" method="post"  onSubmit={handleSubmit} >
       <div className='  sm:w-[50%] sm:mt-20 0 h-[60%] flex flex-col justify-around items-center'>
       <label>
         <input ref={title}  className= ' w-44      sm:w-[60vh] border-b border-black px-4 sm:text-2xl '  type="text" placeholder="Insert Title"
         />
+      </label>
+      <label htmlFor="">
+      <input name='photo'  className='border border-black px-4 py-2 rounded-md' type="file" placeholder='url' ref={cover_photo}/>
       </label>
       <label  className=''>
    
