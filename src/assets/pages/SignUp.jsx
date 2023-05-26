@@ -79,7 +79,7 @@ import Swal from 'sweetalert2'
           </div>
         
        <div className=' flex h-[80%] justify-center '>
-       <form  onSubmit={(e)=>handleForm(e)} className='w-[80%] h-full bg-white text-orange-500 flex flex-col px gap-2' action='/signup' encType="multipart/form-data" method="post">
+       <form  onSubmit={(e)=>handleForm(e)} className='w-[80%] h-full bg-white text-orange-500 flex flex-col px gap-2'  encType="multipart/form-data" method="post">
         <label htmlFor="">Email</label>
         <input className='border border-black px-4 py-2 rounded-md' type="text" placeholder='email' ref={email} />
         <label htmlFor="">Password</label>
