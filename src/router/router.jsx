@@ -15,6 +15,7 @@ import CompanyForm from "../assets/pages/CompanyForm";
 import Author from "../assets/pages/Author"
 import ReadChapter from '../assets/components/ReadChapter';
 import Manga from '../assets/components/Manga';
+import Verify from '../assets/components/verifyAccount.jsx'
 
 
 
@@ -49,6 +50,7 @@ const routes = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/home", element: <Main /> },
       { path: "/auth", element: <Login /> },
+      { path: "/auth/verify-account", element: <Verify/> },
       { path: "/cia-form", element: <CompanyForm /> },
       { path: "/author/:id", element: <Author />},
 

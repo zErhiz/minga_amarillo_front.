@@ -88,16 +88,8 @@ export const SignUp = () => {
       Swal.fire({
         title: 'Check your email to verify your account',
         showDenyButton: true,
-        confirmButtonText: 'Register!',
+        confirmButtonText: 'Ok!',
         
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            Swal.fire('Check your email to verify your account', '', 'success')
-            navigate ('/')
-        } else if (result.isDenied) {
-            Swal.fire('Changes are not saved', '', 'info')
-        }
     })
    
       
