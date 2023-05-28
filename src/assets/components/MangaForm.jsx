@@ -57,10 +57,10 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
       }
 
      
-    axios.post(apiUrl + 'mangas', formData,headers)
+    axios.post(apiUrl +'mangas', formData,headers)
      .then(res=> { navigate("/"); console.log(res);})
-     .catch((error) => {  if(error.response.formData === "Unauthorized"){
-      console.log(error.response.formData === "Unauthorized");
+     .catch((error) => {  if(error.response.data === "Unauthorized"){
+      console.log(error.response.data === "Unauthorized");
       swal.fire({
         position: 'center',
         icon: 'error',
@@ -69,17 +69,17 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
         timer: 2500
       })}
       else {
-        if(typeof error.response.formData.message === "string"){
-          console.log(typeof error.response.formData.message === "string");
+        if(typeof error.response.data.message === "string"){
+          console.log(typeof error.response.data.message === "string");
           swal.fire({
             position: 'center',
             icon: 'error',
-            title: error.response.formData.message,
+            title: error.response.data.message,
             showConfirmButton: false,
             timer: 2500
           })
-        } else if (Array.isArray(error.response.formData.message)) {
-          error.response.formData.message.forEach(err => {
+        } else if (Array.isArray(error.response.data.message)) {
+          error.response.data.message.forEach(err => {
             swal.fire({
               position: 'center',
               icon: 'error',
@@ -108,7 +108,7 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
         />
       </label>
       <label htmlFor="">
-    <input name='cover_photo'  className='w-44      sm:w-[60vh] border-b border-black px-4 sm:text-2xl' type="file" placeholder='url' ref={cover_photo}/> 
+    <input name='cover_photo'  className='w-44 sm:w-[60vh] border-b border-black px-4 sm:text-lg bg-white text-gray-700 rounded-md shadow-sm focus:outline-none' type="file" placeholder='url' ref={cover_photo}/> 
       </label>
       <label  className=''>
    

@@ -26,8 +26,10 @@ try {
         let token = localStorage.getItem('token')
         let headers = { headers: { 'Authorization': `Bearer ${token}` } }
         let res=await axios.delete(apiUrl+'mangas/'+ id,headers)
+       
         return {
-            delete:id
+            delete:id,
+            
         }
 
 
