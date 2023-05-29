@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Link as Anchor, useParams } from 'react-router-dom';
+import { useSelector, useDispatch, } from 'react-redux'
+import { Link as Anchor, useNavigate, useParams } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react'
 import mangas_actions from '../../store/actions/manga'
@@ -10,12 +10,15 @@ const { manga_update } = mangas_actions
 
 export default function Editmanga({ open, setOpen, manga, categories }) {
     let dispatch = useDispatch()
+    let navigate=useNavigate()
     let [valueTitle, setValueTitle] = useState(manga.title)
     let [valueDescription, setValueDescription] = useState(manga.description)
     let [valuePhoto, setValuePhoto] = useState(manga.cover_photo)
     let [valuecategory, setValueCategory] = useState(manga.category_id)
 
-
+let closeModal=()=>{
+    setOpen(false)
+}
     const newTitleChange = (event) => {
         setValueTitle(event.target.value)
     }
@@ -128,9 +131,8 @@ export default function Editmanga({ open, setOpen, manga, categories }) {
                                             {<button onClick={() => editManga(manga._id)} type='submit' className="w-60 h-16 bg-[#34D399] rounded-full cursor-pointer text-white text-lg font-bold hover:bg-green-500 hover:scale-110 transition-all">
                                                 Edit
                                             </button>}
-                                            <button className="w-60 h-16 bg-[#FBDDDC] rounded-full cursor-pointer text-red-400 text-lg font-bold hover:bg-red-400 hover:text-white hover:scale-110 transition-all">
-                                                <Anchor to="/mymangas">Cancel</Anchor>
-                                            </button>
+                                              <button onClick={closeModal}   className="w-60 h-16 bg-[#FBDDDC] rounded-full cursor-pointer text-red-400 text-lg font-bold hover:bg-red-400 hover:text-white hover:scale-110 transition-all">
+                                            Cancel  </button> 
                                         </div>
                                     </div>
                                 </div>

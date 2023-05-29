@@ -121,7 +121,7 @@ const Manga = () => {
   return (
     <>
       <div className="min-h-screen flex flex-col justify-center items-center bg-slate-200  sm:bg-white">
-        <div className="bg-bgmanga bg-no-repeat bg-cover bg-[39%] sm:bg-cover   h-[100vh]  w-[100%] sm:h-[60vh]">
+        <div className="bg-bgmanga bg-no-repeat bg-cover bg-[39%] sm:bg-cover   h-[100vh]  w-full sm:h-[60vh]">
           <div className="flex flex-col justify-center items-center p-52">
             <h1 className="text-6xl text-white p-9">Mangas</h1>
             <label htmlFor=""></label>
@@ -171,7 +171,7 @@ const Manga = () => {
                 
               ))}
             
-               <div className="rounded-2xl flex flex-wrap p-9 flex justify-center items-center sm:w-[99vw] w-[99vw]">
+               <div className="rounded-2xl flex flex-wrap p-9 flex justify-center items-center sm:w-full w-full">
             
           {newMangas}
           
