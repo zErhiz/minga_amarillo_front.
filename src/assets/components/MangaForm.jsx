@@ -107,10 +107,10 @@ let role = JSON.parse(localStorage.getItem('user'))?.role
         <input ref={title}  className= ' w-44      sm:w-[60vh] border-b border-black px-4 sm:text-2xl '  type="text" placeholder="Insert Title"
         />
       </label>
-      <label htmlFor="">
-    <input name='cover_photo'  className='w-44 sm:w-[60vh] border-b border-black px-4 sm:text-lg bg-white text-gray-700 rounded-md shadow-sm focus:outline-none' type="file" placeholder='url' ref={cover_photo}/> 
+      <label placeholder='insert photo' htmlFor=""><label  className=''>
+    <input name='cover_photo'  className='peer block min-h-[auto] w-full rounded border-0 bg-neutral-100 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:bg-neutral-700 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500' type="file" placeholder='url' ref={cover_photo}/> 
       </label>
-      <label  className=''>
+      
    
       <select
     className='w-44 sm:mt-5 sm:w-[60vh] border-b border-black px-4 sm:text-2xl'

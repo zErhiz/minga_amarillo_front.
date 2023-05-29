@@ -7,10 +7,10 @@ import Swal from 'sweetalert2'
  import apiUrl from "../../../api";
  import { Navigate, useNavigate } from "react-router-dom"
  import Error from '../components/Error'
- /* import {uploadFile} from '../firebase/config' */
+import { current } from '@reduxjs/toolkit'
+
  export const SignUp = () => {
-  /*  let file = photo.current.files[0]
-   const result=uploadFile(file)  */
+ 
   const navigate = useNavigate()
   
   const password = useRef()
@@ -22,14 +22,12 @@ import Swal from 'sweetalert2'
     formData.append('email', email.current.value);
     formData.append('password', password.current.value);
     formData.append('photo', photo.current.files[0]);
-   /*  let data ={
-      email: email.current.value,
-      
-      password: password.current.value,
-      photo: photo.current.value,
-
-    
-    } */
+    let data={
+      email:email.current.value,
+      password:password.current.value,
+      photo:photo.current.value
+    }
+  
     axios.post(apiUrl + 'auth/signup', formData)
     .then(res=> {
       Swal.fire({
@@ -85,13 +83,11 @@ import Swal from 'sweetalert2'
         <label htmlFor="">Password</label>
         <input className='border border-black px-4 py-2 rounded-md' type="text" placeholder='password' ref={password}/>
         <label htmlFor="">Photo</label>
-        <input name='photo'  className='border border-black px-4 py-2 rounded-md' type="file" placeholder='url' ref={photo}/>
+        <input name='photo'  className='peer block min-h-[auto] w-full rounded border-0 bg-neutral-100 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:bg-neutral-700 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500' type="file" placeholder='url' ref={photo}/>
         <input className='bg-orange-400 border border-black py-4 text-white text-center rounded-md font-semibold hover:bg-white hover:text-orange-600 cursor-pointer' type="submit" value='Sign Up' />
         </form>
       
        </div>
-        
-        
         </div>
        
         <div className='w-1/2 h-full  hidden bg-bgform w-1/2 h-full bg-contain bg-no-repeat bg-cover sm:block'></div>
