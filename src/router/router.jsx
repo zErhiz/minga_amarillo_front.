@@ -59,6 +59,7 @@ const routes = createBrowserRouter([
       { path:'/listcomment', element: <ListComment/>},
       {path:'/mymangas',element: <MyMangas/>},
       {path:'/new-role',element: <NewRole/> },
+      
       { path:'/admin',element: <Admin/>}
 
 
