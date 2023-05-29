@@ -25,15 +25,15 @@ export const Login = (props) => {
 
   useEffect(()=> {
     const start = () => {
-      gapi.auth2.init( {
-        clienteId : clientID
-      })
+      gapi.auth2.init({
+        clientId: clientID
+      });
     }
     gapi.load("client:auth2",start)
   }, [])
 
   function handleForm(e){
-    // e.preventDefault()
+     e.preventDefault()
     let data={
       email:email.current.value, 
       password:password.current.value

@@ -20,15 +20,17 @@ export const SignUp = () => {
   const photo = useRef()
   function handleForm (e){
     e.preventDefault()
-    let data ={
-      email: email.current.value,
-      
-      password: password.current.value,
-      photo: photo.current.value,
-
-    
+    let formData = new FormData();
+    formData.append('email', email.current.value);
+    formData.append('password', password.current.value);
+    formData.append('photo', photo.current.files[0]);
+    let data={
+      email:email.current.value,
+      password:password.current.value,
+      photo:photo.current.value
     }
-    axios.post(apiUrl + 'auth/signup', data)
+  
+    axios.post(apiUrl + 'auth/signup', formData)
     .then(res=> {
       Swal.fire({
         title: 'User registered',
@@ -42,32 +44,21 @@ export const SignUp = () => {
     })
   
      .catch(err=>{console.log(err)
-      
-      if(err.response && err.response.status === 400){
-        Swal.fire({
-          title: 'error',
-          text: 'User already exist',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        })
-      }else {
-
-        Swal.fire({
-          title: 'Check the fields',
-          text: err.response.data.message,
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        })
-      }
+      Swal.fire({
+        title: 'Check the fields',
+        text: err.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     })
     
   }
 
   useEffect(()=> {
     const start = () => {
-      gapi.auth2.init( {
-        clienteId : clientID
-      })
+      gapi.auth2.init({
+        clientId: clientID
+      });
     }
     gapi.load("client:auth2",start)
   }, [])
