@@ -1,4 +1,4 @@
-
+ 
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../src/App";
 import Layout from "../../src/assets/layouts/Main";
@@ -32,6 +32,7 @@ import ListComment from "../assets/components/ListComment";
 
 import MyMangas from "../assets/components/MyMangas";
 import EditManga from "../assets/components/EditManga";
+import Donation from "../assets/components/Donation";
 
 
 const routes = createBrowserRouter([
@@ -59,8 +60,10 @@ const routes = createBrowserRouter([
       { path:'/listcomment', element: <ListComment/>},
       {path:'/mymangas',element: <MyMangas/>},
       {path:'/new-role',element: <NewRole/> },
-      
-      { path:'/admin',element: <Admin/>}
+
+      { path:'/admin',element: <Admin/>},
+      {path:'/donation', element:<Donation/>}
+
 
 
 
