@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import apiUrl from "../../../api";
-import Switch from "./switch";
+import Switch from "./Switch";
 import { useSelector, useDispatch } from "react-redux";
 import inputs_filter_actions from "../../store/actions/inputs_filter_switch"; //es un objeto con todas las accions que se configuraron
 import { useParams } from "react-router-dom";
