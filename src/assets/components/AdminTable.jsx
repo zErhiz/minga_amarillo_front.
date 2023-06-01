@@ -4,7 +4,7 @@ import active_inactive_actions from "../../store/actions/active_inactive";
 import active_inactive_companie_actions from "../../store/actions/active_inactive_company";
 import action_button from "../../store/actions/state_admin_panel"
 import SwitchAdminPanel from "./SwitchAdminPanel";
-import ButtonAdmin from "./buttonAdmin";
+import ButtonAdmin from "./ButtonAdmin";
 import { useState } from "react";
 function AdminTable() {
   const [isActiveAuthors, setIsActiveAuthors] = useState(false);
