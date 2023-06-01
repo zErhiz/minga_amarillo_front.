@@ -1,5 +1,4 @@
 import React from "react";
-import newroleimage from "../../../public/img/newroleimage.png";
 import logo from "../../../public/img/ultimaimage.png";
 import imageauthor from "../../../public/img/groupauthor.png";
 import imagecompany from "../../../public/img/groupcompany.png";
