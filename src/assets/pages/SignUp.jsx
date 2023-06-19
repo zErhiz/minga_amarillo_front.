@@ -7,14 +7,16 @@ import Swal from 'sweetalert2'
  import apiUrl from "../../../api";
  import { Navigate, useNavigate } from "react-router-dom"
  import { useEffect } from 'react'
+ import { Link as Anchor } from 'react-router-dom'
  import { gapi } from "gapi-script"
 import {GoogleLogin} from "react-google-login"
  import Error from '../components/Error'
  import { current } from '@reduxjs/toolkit'
+ import Login from './Login'
 export const SignUp = () => {
   const navigate = useNavigate()
   const clientID = "166461268192-b8ojdp58ns00djbekuc8o7p2p7lm5krb.apps.googleusercontent.com"
-  
+
   const password = useRef()
   const email= useRef()
   const photo = useRef()
@@ -122,18 +124,18 @@ export const SignUp = () => {
   
   
   
-    <div className='h-screen w-full flex justify-center items-center   h-screen '>
-        <div className='flex flex-col w-[50%] h-[100%] justify-center p-9'>
-          <div className='flex flex-col h-[40%] justify-center items-center  gap-2'>
+    <div className=' h-screen w-full flex justify-center items-center'>
+        <div className=' flex flex-col w-[100%]  sm:w-[50%] h-[100%] justify-center sm:p-0 md:p-9'>
+          <div className=' flex flex-col h-[40%] justify-center items-center  gap-2'>
           <div className=' flex justify-center items-center gap-2'>
           <h2 className='hidden sm:block text-orange-500 text-2xl xl:text-4xl font-bold '>Minga</h2>
          <img className='sm:h-6 xl:h-8' src={ultima} alt="" />
          </div>
-         <div className='flex 2xl:justify-center items-center'>
-         <h2 className='hidden sm:block text- text-2xl xl:text-4xl text-black font-semibold'>Welcome!</h2>
+         <div className=' flex 2xl:justify-center items-center'>
+         <h2 className='hidden sm:block text-xs md:text-2xl xl:text-4xl text-black font-semibold'>Welcome!</h2>
          </div>
        <div className=' w-1/2 2xl:flex justify-center text-center items-center '>
-        <p>Discover manga, manhua and manhwa, track your progress, have fun, read manga.</p>
+        <p className='text-xs md:text-md lg:text-xl'>Discover manga, manhua and manhwa, track your progress, have fun, read manga.</p>
        </div>
           
           </div>
@@ -153,15 +155,15 @@ export const SignUp = () => {
             onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={'single_host_origin'}  />
-    
-            </form>
       
+       
+            </form>
        </div>
         
         
         </div>
        
-        <div className='w-1/2 h-full  hidden bg-bgform w-1/2 h-full bg-contain bg-no-repeat bg-cover sm:block'></div>
+        <div className='  hidden bg-bgform w-1/2 h-full  bg-no-repeat bg-cover sm:block'></div>
         
     </div>
   </>

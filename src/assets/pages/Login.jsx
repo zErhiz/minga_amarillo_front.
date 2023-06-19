@@ -104,11 +104,11 @@ export const Login = (props) => {
   
   
     <>
- {!showRegister ? <div className='h-screen w-full flex justify-center items-center   h-screen '> 
+ {!showRegister ? <div className=' h-screen w-full flex justify-center items-center  '> 
    
-    < div  className='w-1/2 2xl:h-full  hidden bg-bgform2 w-1/2 h-full bg-cover bg-no-repeat bg-cover sm:block'></div>
-    <div className='flex flex-col w-[50%] h-[100%] ustify-center p-9'>
-        <div className='flex flex-col 2xl:h-[40%] justify-center items-center  gap-2'>
+    <div  className=' w-1/2 2xl:h-full  hidden bg-bgform2 h-full bg-cover bg-no-repeat  sm:block'></div>
+    <div className='  flex flex-col w-[100%] sm:w-[50%] h-[100%] justify-center p-9'>
+        <div className=' flex flex-col 2xl:h-[40%] justify-center items-center  gap-2'>
         <div className=' flex justify-center items-center gap-2'>
         <h2 className='hidden sm:block text-orange-500 text-2xl xl:text-4xl font-bold '>Minga</h2>
       <img className='sm:h-6 xl:h-8' src={ultima} alt="" />
@@ -151,7 +151,7 @@ export const Login = (props) => {
 <div className="flex justify-center  items-center">
     
       {showRegister ? <SignUp/>: (
-        <h3 className="font-semibold sm:flex sm:flex-col md:flex-row md:right-10 md:bottom-80 flex justify-center items-center border border-black sm:right-0  lg:right-28 xl:right-48 flex-col absolute  bottom-8 right-10 2xl:bottom-60 2xl:right-80">you don´t have an account yet? <button onClick={()=>setShowRegister(true)} className="font-semibold text-orange-400 ">Sign up</button></h3> 
+        <h3 className="font-semibold flex relative bottom-40 sm:bottom-20 sm:flex-col md:flex-row sm:left-48 md:left-62 md:bottom-40 lg:left-56 xl:left-80 2xl:left-96 2xl:bottom-72">you don´t have an account yet? <button onClick={()=>setShowRegister(true)} className="font-semibold text-orange-400 ">Sign up</button></h3> 
       )}
    
    </div>
