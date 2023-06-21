@@ -38,10 +38,21 @@ export default function Navbar() {
       <header className="">
         <nav className="flex justify-center  ">
           <div className=" absolute top-[0rem] sm:top-[-2rem] flex items-center mt-4 justify-between w-5/6  xl:mt-10">
-            
-            <svg    className="sm:h-8 sm:mt-10 lg:mt-12 xl:h-12 h-12 cursor-pointer text-orange-500"   onClick={() => setMenu(!menu)}  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
-  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-</svg>
+            <svg
+              className="sm:h-8 sm:mt-10 lg:mt-12 xl:h-12 h-12 cursor-pointer text-orange-500"
+              onClick={() => setMenu(!menu)}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
 
             <div className="sm:flex  sm:items-center sm:mt-9 sm:gap-4  sm:flex-row">
               <h2 className="hidden sm:block text-orange-500 text-2xl xl:text-4xl font-semibold">
@@ -75,40 +86,35 @@ export default function Navbar() {
               <ul className=" flex flex-col  items-center 2xl:mt-20 xl:mt-20 ">
                 <li
                   onClick={() => setMenu(!menu)}
-                  className="bg-white w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-orange-500 font-bold"
+                  className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                 >
                   <Anchor to="/">Home</Anchor>
                 </li>
-                <li 
-                 onClick={() => setMenu(!menu)}
-                className="p-4 text-white font-semibold">
-                  
-                <Anchor to="/mangas/:page">Comics</Anchor>
+                <li
+                  onClick={() => setMenu(!menu)}
+                  className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
+                >
+                  <Anchor to="/mangas/:page">Comics</Anchor>
                 </li>
-                <li className="p-4 text-white font-semibold">
-                  My Comics
-                </li>
+               
 
                 {role === 1 || role === 2 ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     {" "}
                     <Anchor to="/mangas-form"> New Manga</Anchor>
                   </li>
                 ) : null}
-                <li className="p-4 text-white font-semibold">
-                  {" "}
-                  <a href="#">Favorites</a>
-                </li>
+              
                 {token ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     {" "}
-                    <a onClick= {backHome} href="#">
+                    <a onClick={backHome} href="#">
                       Logout
                     </a>
                   </li>
@@ -116,7 +122,7 @@ export default function Navbar() {
                 {!token ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     <Anchor to="/register">Register</Anchor>
                   </li>
@@ -124,16 +130,16 @@ export default function Navbar() {
                 {!token ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     <Anchor to="/login">Sign in</Anchor>
                   </li>
                 ) : null}
-             
-                 {role === 0 ? (
+
+                {role === 0 ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     {" "}
                     <Anchor to="/new-role"> Change Your Role </Anchor>
@@ -142,43 +148,33 @@ export default function Navbar() {
                 {role === 1 || role === 2 ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     {" "}
                     <Anchor to="/chapters-form">New Chapter</Anchor>
                   </li>
-                  
                 ) : null}
 
-                        {role === 3 ? 
-                        <li
-
-                    onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
-                  >
-                    {" "}
-
-
-                    <Anchor to="/admin">Admin Panel</Anchor>
-                  </li>
-                  :null}
-
-                  
-               {role === 1 || role === 2 ? ( 
+                {role === 3 ? (
                   <li
                     onClick={() => setMenu(!menu)}
-                    className="p-4 text-white font-semibold"
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
+                  >
+                    {" "}
+                    <Anchor to="/admin">Admin Panel</Anchor>
+                  </li>
+                ) : null}
+
+                {role === 1 || role === 2 ? (
+                  <li
+                    onClick={() => setMenu(!menu)}
+                    className="bg-orange-500 w-[80%] 2xl:w-[30%] p-4 text-center rounded-lg h-auto text-white font-bold hover:bg-white hover:text-orange-500"
                   >
                     {" "}
                     <Anchor to="/mymangas">My Mangas</Anchor>
                   </li>
-                  
-               ) : null } 
-
-                        
-
+                ) : null}
               </ul>
-              
             </div>
           </div>
         ) : null}
@@ -186,4 +182,3 @@ export default function Navbar() {
     </>
   );
 }
-

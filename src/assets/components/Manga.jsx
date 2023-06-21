@@ -117,16 +117,16 @@ const Manga = () => {
     setReload(!reload); //para que refresque los componentes o la página cuando realizo un accion 
      //usar useNavigate
   }
-
+console.log(categories)
   return (
     <>
       <div className="min-h-screen flex flex-col justify-center items-center bg-slate-200  sm:bg-white">
-        <div className="bg-bgmanga bg-no-repeat bg-cover bg-[39%] sm:bg-cover   h-[100vh]  w-full sm:h-[60vh]">
-          <div className="flex flex-col justify-center items-center p-52">
+        <div className="bg-bgmanga bg-no-repeat bg-cover bg-[39%] sm:bg-cover   h-[100vh]  w-full sm:h-[60vh]  flex flex-col justify-center sm:justify-normal md:justify-center">
+          <div className="flex flex-col justify-center items-center  ">
             <h1 className="text-6xl text-white p-9">Mangas</h1>
             <label htmlFor=""></label>
             <input
-              className="text-2xl sm:w-[100%] p-1 rounded-md"
+              className="text-2xl sm:w-[50%] p-1 rounded-md"
               defaultValue={title2}
               type="search"
               name="Find Your Manga here"
@@ -139,8 +139,8 @@ const Manga = () => {
       
       
         <div className=" mt-[-5rem] gap-4 p-6 w-[100%] sm:w-[90%] rounded-3xl sm:rounded-2xl border bg-slater-200 sm:bg-white justify-center items-center">
-        <h2 className="font-semibold sm:hidden text-neutral-950 text-left">Explore</h2>
-        <div className=" gap-6 flex block sm:hidden p-6">
+        <h2 className="font-semibold sm:hidden text-white text-left">Explore</h2>
+        <div className=" gap-6 flex sm:hidden p-6 w-[40%]">
             
             <img src={Frame26} alt="" />
             <img src={Frame27} alt="" />
@@ -149,30 +149,31 @@ const Manga = () => {
           <form ref={category_id}>
             {categories &&
               categories.map((category) => (
-                <label className=""
+                <label
+                  className="cursor-pointer"
                   htmlFor={category._id}
                   key={category._id}
                   style={{
-                    backgroundColor: category.hover,
+                    backgroundColor: category.color,
                     padding: "0.3rem",
                     borderRadius: "20px",
                   }}
                 >
-                  {category.name}
-                  <input className="gap-6"
-                    defaultChecked={ categories2.includes(category._id)}
+                  {category.name.charAt(0).toUpperCase() + category.name.slice(1).toLowerCase()}
+                  <input
+                    className="sr-only"
+                    defaultChecked={categories2.includes(category._id)}
                     name="category_id"
-                     onChange={checkbox}
+                    onChange={checkbox}
                     type="checkbox"
                     value={category._id}
                     id={category._id}
                   />
                 </label>
-                
               ))}
             
-               <div className="rounded-2xl flex flex-wrap p-9 flex justify-center items-center sm:w-full w-full">
-            
+               <div className="rounded-2xl flex flex-wrap   justify-center items-center  w-full">
+                  
           {newMangas}
           
         </div>
@@ -183,14 +184,14 @@ const Manga = () => {
         <div className="flex sm:gap-96 p-9 w-[85%] justify-center">
           {page != 1 && (
             <button
-              className="border  text-white font-semibold bg-orange-500 p-4 sm:w-[10%] rounded-md"
+              className="border  text-white font-semibold bg-orange-500 p-4 sm:w-[20%] lg:w-[10%] rounded-md"
               onClick={prev}
             >
               PREV
             </button>
           )}
           <button
-            className="border  p-4 sm:w-[10%] bg-orange-500 text-white font-semibold rounded-md rounded-md"
+            className="border  p-4 sm:w-[20%] lg:w-[10%] bg-orange-500 text-white font-semibold  rounded-md"
             onClick={next}
           >
             NEXT
