@@ -7,8 +7,8 @@ export default function Author() {
   let role = JSON.parse(localStorage.getItem('user'))?.role
   return (
     <> 
-   { role=== 0 ?  
 
+   { role >= 0 ?  
     <>
     <div className='bg-[#EBEBEB] h-fit min-h-[103.5vh]'> 
     <AuthorProfile/>

@@ -106,8 +106,10 @@ export default function Manga() {
 
       {showMangaContent ? (
         <div className='  mt-24  min-h-screen w-full flex flex-col justify-center items-center sm:mt-24'>
+          <div className='flex flex-col sm:flex-row w-full justify-around items-center min-h-screen '>
 
-          <img className=' sm:mt-16  rounded-2xl w-[90%]   object-cover  sm:w-[20vw]  ' src={mangas.cover_photo} />
+          <img className=' sm:mt-16  rounded-2xl w-[90%]   object-cover  sm:w-[30%]   ' src={mangas.cover_photo} />
+          <div className='flex flex-col sm:w-[60%]   sm:h-[50%] items-center '>
 
           <h2 className='w-[90%] text-4xl text-center mt-5 sm:text-5xl text-[#222222] '>{mangas.title}</h2>
           <p></p>
@@ -141,24 +143,30 @@ export default function Manga() {
             <button className={` w-[50%] rounded-lg sm:text-xl sm:rounded-3xl text-[#9D9D9D] ${!showMangaContent && "bg-[#EBEBEB]"}`} onClick={() => setShowMangaContent(false)}>Chapters</button>
           </div>
 
-          <h2 className='mt-5 h-[25rem]  w-[80%] sm:text-2xl sm:mt-9'>{mangas.description}</h2>
+          <h2 className='mt-5 h-[25rem] overflow-scroll   w-[80%] sm:text-2xl sm:mt-9'>{mangas.description}</h2>
+          </div>
+          </div>
 
         </div>) : (
 
-        <div className='mt-20  min-h-screen w-full flex flex-col justify-center items-center sm:mt-24'>
-          <img className=' sm:mt-16  rounded-2xl w-[90%]   object-cover  sm:w-[20vw]' src={mangas.cover_photo} />
+        <div className='mt-20  min-h-screen w-full flex flex-col justify-center items-center sm:mt-32'>
+ <div className='flex flex-col sm:flex-row w-full justify-around items-center  sm:items-start min-h-screen '>
+
+          <img className=' sm:mt-16  rounded-2xl w-[90%]   object-cover  sm:w-[20vw]  sm:h-full' src={mangas.cover_photo} />
+          <div className='flex flex-col w-[90%] sm:w-[50%]  items-center  '>
+
           <h2 className='w-[90%] text-2xl text-center mt-5 sm:text-5xl text-[#222222] sm:mt-10'>Chapters</h2>
           <div className='mt-8 h-7 w-[90%] sm:w-[80%] flex justify-around  rounded-lg sm:h-20 sm:mt-20 ' >
             <button className={` w-[50%] rounded-lg sm:text-xl sm:rounded-3xl text-[#9D9D9D] ${showMangaContent & ""}`} onClick={() => setShowMangaContent(true)}>Mangas</button>
             <button className={` w-[50%] rounded-lg sm:text-xl sm:rounded-3xl text-white ${!showMangaContent && "bg-[#F97316]"}`} onClick={() => setShowMangaContent(false)}>Chapters</button>
           </div>
-          <div>
+          <div className='w-[100%]'>
             {chapters.map((chapt) => (
-              <div className='w-[90vw] sm:mb-20 h-28 flex justify-evenly  items-center  sm:mt-32' key={chapt.title}>
-                <img className='h-16 w-20 sm:h-40 sm:w-44  bg-cover rounded-xl  ' src={chapt.cover_photo} alt="" />
-                <div className='flex flex-col justify-between k w-[33%]  h-16'>
+              <div className='w-[100%] sm:mb-20 h-28 flex justify-evenly  items-center   sm:mt-32' key={chapt.title}>
+                <img className='h-16 w-[30%] sm:h-32 sm:w-[15%]  bg-cover rounded-xl  ' src={chapt.cover_photo} alt="" />
+                <div className='flex flex-col justify-between  w-[20%]   h-16'>
                   <div className='flex justify-center'>
-                    <h2 className='sm:text-3xl items'>{chapt.title}</h2>
+                    <h2 className='sm:text-xl items'>{chapt.title}</h2>
                     <h2>{chapt.order}</h2>
                   </div>
                   <div className='flex   justify-center   '>
@@ -167,7 +175,7 @@ export default function Manga() {
                   </div>
                 </div >
                 <div className=' w-[30%]  sm:w-[15%]'>
-                  {chapt._id && <button onClick={() => navigate(`/chapters/${chapt._id}/0`)} className='rounded-full bg-orange-600 h-16 w-24 sm:w-40 sm:h-20 sm:text-2xl text-white  text-lg'>Read</button>}
+                  {chapt._id && <button onClick={() => navigate(`/chapters/${chapt._id}/0`)} className='rounded-full bg-orange-600 h-14 w-24 sm:w-[100%] sm:h-20 sm:text-xl text-white  text-lg'>Read</button>}
                 </div>
               </div>
             )
@@ -178,6 +186,8 @@ export default function Manga() {
               {pageChange != 1 && <input className={`w-20 h-6 bg-[#F97316] rounded-2xl mt-5 text-white sm:w-40 sm:h-11`} type="button" value='previus' onClick={PREV}></input>}
               {pageChange != cantPages && <input className={`w-20 h-6 bg-zinc-600 rounded-2xl mt-5 text-white sm:w-40 sm:h-11`} type="button" value='next' onClick={NEXT}></input>}
             </div>}
+          </div>
+          </div>
           </div>
         </div>
 
